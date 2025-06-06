@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,8 +15,10 @@ public class UiManager : MonoBehaviour
     [SerializeField] private List<Action> m_actions;
 
     [Header("Goal UI")]
-    [SerializeField] private GameObject m_addGoalScrollbar;
+    [SerializeField] private GameObject m_addGoalVLG;
     [SerializeField] private GameObject m_addGoalTemplateButton;
+    [SerializeField] private GameObject m_goalsVLG;
+    [SerializeField] private GameObject m_goalTemplateElement;
     
 
     #endregion Variables
@@ -35,10 +38,15 @@ public class UiManager : MonoBehaviour
 
     private void CreateGoalButton(string _goalName)
     {
-        GameObject goalButtonGO = Instantiate(m_addGoalTemplateButton, m_addGoalScrollbar.transform);
+        GameObject goalButtonGO = Instantiate(m_addGoalTemplateButton, m_addGoalVLG.transform);
         AddGoalTemplateButton buttonScript = goalButtonGO.GetComponent<AddGoalTemplateButton>();
         buttonScript.SetText(_goalName);
-        
-        // Add click behavior
+        buttonScript.SetUiManager(this);
+    }
+
+    public void CreateGoalInstance(string _goalName)
+    {
+        GameObject goalGO = Instantiate(m_goalTemplateElement, m_goalsVLG.transform);
+        goalGO.GetComponentInChildren<TMP_Text>().text = _goalName;
     }
 }

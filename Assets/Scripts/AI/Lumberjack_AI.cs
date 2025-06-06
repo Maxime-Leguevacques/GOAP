@@ -31,14 +31,19 @@ public class Lumberjack_AI : MonoBehaviour
         m_blackBoard = new();
         m_goals = new();
         
-        // Plan
-        m_planner.Plan(m_blackBoard, m_goals);
-
-        m_plannedActions = m_planner.possiblePlans[0];
+        // // Plan
+        // m_planner.Plan(m_blackBoard, m_goals);
+        //
+        // m_plannedActions = m_planner.possiblePlans[0];
     }
 
     private void Update()
     {
+        foreach (var goal in m_goals)
+        {
+            Debug.Log(goal.Key);
+        }
+        
         if (m_currenAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
         {
             m_currenAction = m_plannedActions.Dequeue();
@@ -110,5 +115,10 @@ public class Lumberjack_AI : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void AddGoal(KeyValuePair<string, object> _newGoal)
+    {
+        m_goals.Add(_newGoal.Key, _newGoal.Value);
     }
 }

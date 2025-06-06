@@ -14,12 +14,13 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private List<Action> m_actions;
 
+    [SerializeField] private GameObject m_agent;
+    
     [Header("Goal UI")]
     [SerializeField] private GameObject m_addGoalVLG;
     [SerializeField] private GameObject m_addGoalTemplateButton;
     [SerializeField] private GameObject m_goalsVLG;
     [SerializeField] private GameObject m_goalTemplateElement;
-    
 
     #endregion Variables
 
@@ -48,5 +49,7 @@ public class UiManager : MonoBehaviour
     {
         GameObject goalGO = Instantiate(m_goalTemplateElement, m_goalsVLG.transform);
         goalGO.GetComponentInChildren<TMP_Text>().text = _goalName;
+
+        m_agent.GetComponent<Lumberjack_AI>().AddGoal(new KeyValuePair<string, object>(_goalName, true));
     }
 }

@@ -7,8 +7,9 @@ public class Planner : MonoBehaviour
 {
     #region Variables
 
-    private List<Queue<Action>> m_possiblePlans;
     private List<Action> m_actionList;
+    
+    public List<Queue<Action>> possiblePlans;
 
     #endregion Variables
 
@@ -17,22 +18,17 @@ public class Planner : MonoBehaviour
     {
         // Load actions
         m_actionList = new List<Action>(GetComponents<Action>());
-        m_possiblePlans = new List<Queue<Action>>();
+        possiblePlans = new List<Queue<Action>>();
     }
 
     // Return the unique planned used by the agent
-    public Queue<Action> Plan(Dictionary<string, object> _blackBoard)
+    public void Plan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals)
     {
-        m_possiblePlans.Clear();
+        possiblePlans.Clear();
         
-        Dictionary<string, object> goals = new();
         Queue<Action> plan = new();
         
-        GeneratePlan(_blackBoard, goals, plan);
-        
-        
-        
-        return null;
+        GeneratePlan(_blackBoard, _goals, plan);
     }
     
     // Build all possible plans
@@ -52,7 +48,7 @@ public class Planner : MonoBehaviour
         // If so, return the plan
         if (areGoalsMet)
         {
-            m_possiblePlans.Add(_plan);
+            possiblePlans.Add(_plan);
             return;
         }
         

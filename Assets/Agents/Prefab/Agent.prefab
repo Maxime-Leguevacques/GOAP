@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 1413295274803945309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.032788873, y: 0.538, z: 0.189}
+  m_LocalPosition: {x: 0, y: 0.4501313, z: 0.26962936}
   m_LocalScale: {x: 0.8, y: 0.2, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2864572901293901846}
+  m_Father: {fileID: 6536952321814840248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6705275904462014371
 MeshFilter:
@@ -138,7 +138,8 @@ Transform:
   m_LocalPosition: {x: -0.032788873, y: 0.08786869, z: -0.08062935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2475021206855592245}
   m_Father: {fileID: 2864572901293901846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6578218180182048123
@@ -228,6 +229,7 @@ GameObject:
   - component: {fileID: 1106824299253953932}
   - component: {fileID: 9008930106338708797}
   - component: {fileID: 2556545136612837687}
+  - component: {fileID: 101495274075610326}
   m_Layer: 6
   m_Name: Agent
   m_TagString: Untagged
@@ -249,7 +251,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6536952321814840248}
-  - {fileID: 2475021206855592245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1106824299253953932
@@ -271,7 +272,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &9008930106338708797
@@ -286,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549eb54fc95e2204b956b7304ae46450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWanderRadius: 25
+  maxWanderRadius: 40
 --- !u!114 &2556545136612837687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +301,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0afc6fc171960d46b074a62fe06fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &101495274075610326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c76f5c296568b34b8bea7bbe315907b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0

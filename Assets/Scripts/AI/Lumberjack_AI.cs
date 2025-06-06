@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -11,12 +12,18 @@ public class Lumberjack_AI : MonoBehaviour
 {
     #region Variables
 
+    // ########## PRIVATE ########## //
     private Planner m_planner;
     private Queue<Action> m_plannedActions = new();
     private Action m_currenAction;
 
-    private Dictionary<string, object> m_blackBoard;
     private Dictionary<string, object> m_goals;
+    
+    // ########## PUBLIC ########## //
+    [SerializeField] public float  minWanderRadius = 25.0f;
+    [SerializeField] public float  maxWanderRadius = 40.0f;
+    
+    public Dictionary<string, object> blackBoard;
 
     #endregion Variables
 
@@ -28,31 +35,27 @@ public class Lumberjack_AI : MonoBehaviour
 
     private void Start()
     {
-        m_blackBoard = new();
+        blackBoard = new();
         m_goals = new();
         
-        // // Plan
-        // m_planner.Plan(m_blackBoard, m_goals);
-        //
-        // m_plannedActions = m_planner.possiblePlans[0];
+        // Plan
+        m_planner.Plan(blackBoard, m_goals);
+        m_plannedActions = m_planner.possiblePlans[0];
     }
 
     private void Update()
     {
-        foreach (var goal in m_goals)
-        {
-            Debug.Log(goal.Key);
-        }
-        
         if (m_currenAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
         {
             m_currenAction = m_plannedActions.Dequeue();
+
+            m_currenAction.Reset();
 
             if (!m_currenAction.CheckPreconditions(gameObject))
             {
                 m_currenAction = null;
                 m_plannedActions.Clear();
-                m_planner.Plan(m_blackBoard, m_goals);
+                m_planner.Plan(blackBoard, m_goals);
                 if (m_planner.possiblePlans.Count > 0)
                 {
                     m_plannedActions = m_planner.possiblePlans[0];
@@ -73,13 +76,13 @@ public class Lumberjack_AI : MonoBehaviour
                 // Update black board
                 foreach (var effect in m_currenAction.effects)
                 {
-                    m_blackBoard[effect.Key] = effect.Value;
+                    blackBoard[effect.Key] = effect.Value;
                 }
                 
                 m_currenAction = null;
                 
                 // Check if goals are reached
-                if (CheckIfGoalsAreReached(m_blackBoard, m_goals))
+                if (CheckIfGoalsAreReached(blackBoard, m_goals))
                 {
                     Debug.Log("Goals Reached !");
                 }
@@ -87,19 +90,12 @@ public class Lumberjack_AI : MonoBehaviour
 
             else if (m_currenAction.state == Action.EState.UNSUCCESSFUL)
             {
-                m_currenAction = null;
-                m_planner.Plan(m_blackBoard, m_goals);
-
-                if (m_plannedActions != null && m_plannedActions.Count == 0)
-                {
-                    m_plannedActions.Clear();
-                }
+                m_currenAction.UpdateBlackBoard(blackBoard);
                 
-                if (m_planner.possiblePlans.Count > 0)
-                {
-                    m_plannedActions = m_planner.possiblePlans[0];
-                }
-                return; 
+                m_currenAction = null;
+                m_plannedActions.Clear();
+                m_planner.Plan(blackBoard, m_goals); 
+                m_plannedActions = m_planner.possiblePlans[0];
             }
         }
     }
@@ -119,6 +115,36 @@ public class Lumberjack_AI : MonoBehaviour
 
     public void AddGoal(KeyValuePair<string, object> _newGoal)
     {
-        m_goals.Add(_newGoal.Key, _newGoal.Value);
+        if (!m_goals.ContainsKey(_newGoal.Key))
+        {
+            m_goals.Add(_newGoal.Key, _newGoal.Value);
+        }
+        else
+        {
+            m_goals[_newGoal.Key] = _newGoal.Value;
+        }
+        
+        // Plan
+        m_planner.Plan(blackBoard, m_goals);
+        if (m_planner.possiblePlans.Count > 0)
+        {
+            m_plannedActions = m_planner.possiblePlans[0];
+        }
+        else
+        {
+            Debug.LogWarning("No plan could be generated for the given goals.");
+            m_plannedActions.Clear();
+        }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, minWanderRadius);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, maxWanderRadius);
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(gameObject.GetComponent<NavMeshAgent>().destination, 1.0f);
     }
 }

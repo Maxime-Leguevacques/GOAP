@@ -25,15 +25,17 @@ public class UiManager : MonoBehaviour
     #endregion Variables
 
 
-    private void Awake()
+    private void Start()
     {
         m_actions = new List<Action>(GetComponents<Action>());
 
         for (int i = 0; i < m_actions.Count; i++)
         {
-            string name = m_actions[i].GetType().Name;
-            name = name.Replace("_ACTION", "");
-            CreateGoalButton(name);
+            foreach (var effect in m_actions[i].effects)
+            {
+                string goalName = effect.Key;
+                CreateGoalButton(goalName);
+            }
         }
     }
 

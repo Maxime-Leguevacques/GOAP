@@ -7,6 +7,8 @@ public class Planner : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField] private const int MAX_DEPTH = 25;
+    
     private List<Action> m_actionList;
     
     public List<Queue<Action>> possiblePlans;
@@ -27,13 +29,23 @@ public class Planner : MonoBehaviour
         possiblePlans.Clear();
         
         Queue<Action> plan = new();
-        
         GeneratePlan(_blackBoard, _goals, plan);
     }
     
     // Build all possible plans
-    private void GeneratePlan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals, Queue<Action> _plan)
+    private void GeneratePlan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals, Queue<Action> _plan, int _depth = 0)
     {
+        // Check if we are before the depth limit
+        if (_depth > MAX_DEPTH)
+        {
+            Debug.Log("MAX DEPTH REACHED");
+            foreach (var action in _plan)
+            {
+                Debug.Log(action);
+            }
+            return;    
+        }
+        
         // Check if all goals are met
         bool areGoalsMet = true;
         foreach (var goal in _goals)
@@ -64,6 +76,7 @@ public class Planner : MonoBehaviour
                 if (!_blackBoard.ContainsKey(precondition.Key) || !_blackBoard[precondition.Key].Equals(precondition.Value))
                 {
                     arePreconditionsMet = false;
+                    break;
                 }
             }
 
@@ -84,7 +97,7 @@ public class Planner : MonoBehaviour
             recursivePlan.Enqueue(action);
 
             // Continue to generate plan
-            GeneratePlan(recursiveBlackBoard, _goals, recursivePlan);
+            GeneratePlan(recursiveBlackBoard, _goals, recursivePlan, _depth + 1);
         }
     }
 }

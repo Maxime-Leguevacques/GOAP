@@ -706,7 +706,6 @@ GameObject:
   - component: {fileID: 826355461}
   - component: {fileID: 826355460}
   - component: {fileID: 826355462}
-  - component: {fileID: 826355463}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -727,6 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actions: []
+  m_agent: {fileID: 1315098}
   m_addGoalVLG: {fileID: 297731983}
   m_addGoalTemplateButton: {fileID: 3327918066216885234, guid: ae74c9881ecd9174a9f139c215a304ad, type: 3}
   m_goalsVLG: {fileID: 1618224077}
@@ -755,23 +755,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 826355458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1c6a6001a290541b1201939e6c11b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c76f5c296568b34b8bea7bbe315907b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
---- !u!114 &826355463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826355458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc79060d214abb499382da5fb725494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
+  priority: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1261,14 @@ PrefabInstance:
     - target: {fileID: 6154451504692118266, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_Name
       value: Agent
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: wanderRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: minWanderRadius
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

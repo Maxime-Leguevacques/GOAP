@@ -16,12 +16,16 @@ public abstract class Action : MonoBehaviour
 
     public EState state;
 
+    public int priority = 0;
+
     #endregion Variables
     
 
     public Dictionary<string, object> preconditions = new();
     public Dictionary<string, object> effects = new();
 
+    protected abstract void Awake();
+    
     public abstract bool CheckPreconditions(GameObject _agent);
     public abstract void Perform(GameObject _agent);
     public abstract void UpdateBlackBoard(Dictionary<string, object> _blackBoard);

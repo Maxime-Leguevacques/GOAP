@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,87 @@ public class Planner : MonoBehaviour
     #region Variables
 
     private List<Queue<Action>> m_possiblePlans;
+    private List<Action> m_actionList;
 
     #endregion Variables
-    
-    
+
+
+    private void Start()
+    {
+        // Load actions
+        m_actionList = new List<Action>(GetComponents<Action>());
+        m_possiblePlans = new List<Queue<Action>>();
+    }
+
     // Return the unique planned used by the agent
-    public Queue<Action> Plan(Dictionary<string, object> _goals)
+    public Queue<Action> Plan(Dictionary<string, object> _blackBoard)
     {
         m_possiblePlans.Clear();
+        
+        Dictionary<string, object> goals = new();
+        Queue<Action> plan = new();
+        
+        GeneratePlan(_blackBoard, goals, plan);
+        
+        
+        
         return null;
     }
     
     // Build all possible plans
-    
+    private void GeneratePlan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals, Queue<Action> _plan)
+    {
+        // Check if all goals are met
+        bool areGoalsMet = true;
+        foreach (var goal in _goals)
+        {
+            if (!_blackBoard.ContainsKey(goal.Key) || !_blackBoard[goal.Key].Equals(goal.Value))
+            {
+                areGoalsMet = false;
+                break;
+            }
+        }
+
+        // If so, return the plan
+        if (areGoalsMet)
+        {
+            m_possiblePlans.Add(_plan);
+            return;
+        }
+        
+        // ########## Forward plan generation ########## //
+        
+        // Loop through all actions
+        foreach (var action in m_actionList)
+        {
+            bool arePreconditionsMet = true;
+            // Check if blackboard meets all preconditions
+            foreach (var precondition in action.preconditions)
+            {
+                if (!_blackBoard.ContainsKey(precondition.Key) || !_blackBoard[precondition.Key].Equals(precondition.Value))
+                {
+                    arePreconditionsMet = false;
+                }
+            }
+
+            // Skip if preconditions aren't met
+            if (!arePreconditionsMet)
+            {
+                continue;
+            }
+
+            Dictionary<string, object> recursiveBlackBoard = new Dictionary<string, object>(_blackBoard);
+            Queue<Action> recursivePlan = new Queue<Action>(_plan);
+            
+            // Update blackboard
+            foreach (var effect in action.effects)
+            {
+                recursiveBlackBoard[effect.Key] = effect.Value;
+            }
+            recursivePlan.Enqueue(action);
+
+            // Continue to generate plan
+            GeneratePlan(recursiveBlackBoard, _goals, recursivePlan);
+        }
+    }
 }

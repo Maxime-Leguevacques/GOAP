@@ -31,7 +31,7 @@ public class Lumberjack_AI : MonoBehaviour
         m_blackBoard = new();
         
         // Plan
-        // m_planner.Plan();
+        m_planner.Plan(m_blackBoard);
     }
 
     private void Update()

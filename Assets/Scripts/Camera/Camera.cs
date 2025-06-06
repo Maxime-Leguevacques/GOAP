@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private GameObject m_agent;
     [SerializeField] private float smoothSpeed = 5f;
 
     private Vector3 m_offset;
+
+    #endregion Variables
+    
 
     void Start()
     {

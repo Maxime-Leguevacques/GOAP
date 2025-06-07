@@ -48,8 +48,7 @@ public class Lumberjack_AI : MonoBehaviour
         m_goals = new();
         
         // Plan
-        m_planner.Plan(blackBoard, m_goals);
-        m_plannedActions = m_planner.possiblePlans[0];
+        RePlan();
     }
 
     private void Update()
@@ -146,6 +145,11 @@ public class Lumberjack_AI : MonoBehaviour
         if (m_planner.possiblePlans.Count > 0)
         {
             m_plannedActions = m_planner.possiblePlans[0];
+
+            foreach (var action in m_plannedActions)
+            {
+                Debug.Log(action);
+            }
         }
     }
 
@@ -154,7 +158,8 @@ public class Lumberjack_AI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, minWanderRadius);
         Gizmos.DrawWireSphere(transform.position, maxWanderRadius);
-        
+
+        Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(gameObject.GetComponent<NavMeshAgent>().destination, 1.0f);
     }
 }

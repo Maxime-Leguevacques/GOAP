@@ -35,7 +35,7 @@ public class ChopTree_ACTION : Action
     public override void Perform(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.spottedTree != null)
+        if (lumberjackAi.spottedTree != null && !lumberjackAi.isInteracting)
         {
             lumberjackAi.spottedTree.GetComponent<Tree_SO>().Interact(_agent);
         }

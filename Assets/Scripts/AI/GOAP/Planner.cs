@@ -38,11 +38,6 @@ public class Planner : MonoBehaviour
         // Check if we are before the depth limit
         if (_depth > MAX_DEPTH)
         {
-            Debug.Log("MAX DEPTH REACHED");
-            foreach (var action in _plan)
-            {
-                Debug.Log(action);
-            }
             return;    
         }
         

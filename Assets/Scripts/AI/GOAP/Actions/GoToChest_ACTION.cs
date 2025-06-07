@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class GoToTree_ACTION : Action
+public class GoToChest_ACTION : Action
 {
     #region Variables
 
@@ -21,15 +21,16 @@ public class GoToTree_ACTION : Action
     {
         // Priority
         // Preconditions
-        preconditions["TreeIsVisible"] = true;
+        preconditions["HasWood"] = true;
         // Effects
-        effects["TreeIsInRange"] = true;
+        effects["HasWood"] = false;
+        effects["IsWoodStored"] = true;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.blackBoard["TreeIsVisible"].Equals(false))
+        if (lumberjackAi.blackBoard["HasWood"].Equals(false))
         {
             return false;
         }
@@ -47,7 +48,7 @@ public class GoToTree_ACTION : Action
                 return;
             }
 
-            m_navMeshAgent.SetDestination(_agent.GetComponent<Lumberjack_AI>().spottedTree.transform.position);
+            m_navMeshAgent.SetDestination(_agent.GetComponent<Lumberjack_AI>().chest.transform.position);
 
             m_hasStarted = true;
         }

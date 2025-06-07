@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 [RequireComponent(typeof(AudioSource))]
-public class Tree_SO : SmartObject
+public class Chest_SO : SmartObject
 {
     #region Variables
 
@@ -17,8 +16,7 @@ public class Tree_SO : SmartObject
     
     protected override void Awake()
     {
-        m_interactionTime = 5.0f;
-
+        m_interactionTime = 2.5f;
         m_audioSource = GetComponent<AudioSource>();
     }
 
@@ -33,6 +31,5 @@ public class Tree_SO : SmartObject
     {
         yield return new WaitForSeconds(_duration);
         _agent.GetComponent<Lumberjack_AI>().isInteracting = false;
-        Destroy(gameObject);
     }
 }

@@ -26,7 +26,9 @@ public class Lumberjack_AI : MonoBehaviour
     
     public Dictionary<string, object> blackBoard;
 
-    public GameObject spottedTree;
+    [HideInInspector] public GameObject spottedTree;
+    [SerializeField] public GameObject chest;
+    
     public bool isInteracting = false;
 
     #endregion Variables
@@ -43,7 +45,8 @@ public class Lumberjack_AI : MonoBehaviour
         {
             { "TreeIsVisible", false },
             { "TreeIsInRange", false },
-            { "HasWood", false }
+            { "HasWood", false },
+            { "IsWoodStored", false}
         };
             
         m_goals = new();

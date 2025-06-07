@@ -2,24 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChopTree_ACTION : Action
+public class StoreInChest_ACTION : Action
 {
+    #region Variables
+
+    private bool m_hasInteracted = false;
+
+    #endregion Variables
+    
+    
     protected override void Awake()
     {
         // Priority
         // Preconditions
-        preconditions["TreeIsInRange"] = true;
-        preconditions["HasWood"] = false;
+        preconditions["HasWood"] = true;
+        preconditions["ChestIsInRange"] = true;
         // Effects
-        effects["TreeIsInRange"] = false;
-        effects["HasWood"] = true;
+        effects["HasWood"] = false;
+        effects["IsWoodStored"] = true;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        // Check if tree is in range and if agent isn't already carrying wood
-        if (lumberjackAi.blackBoard["TreeIsInRange"].Equals(false) && lumberjackAi.blackBoard["HasWood"].Equals(true))
+        // Check if agent is carrying wood and chest is in range
+        if (lumberjackAi.blackBoard["HasWood"].Equals(false) || lumberjackAi.blackBoard["ChestIsInRange"].Equals(false))
         {
             return false;
         }
@@ -30,9 +37,10 @@ public class ChopTree_ACTION : Action
     public override void Perform(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.spottedTree != null && !lumberjackAi.isInteracting)
+        if (lumberjackAi.chest != null && !lumberjackAi.isInteracting && !m_hasInteracted)
         {
-            lumberjackAi.spottedTree.GetComponent<Tree_SO>().Interact(_agent);
+            m_hasInteracted = true;
+            lumberjackAi.chest.GetComponent<Chest_SO>().Interact(_agent);
         }
 
         if (!lumberjackAi.isInteracting)
@@ -53,5 +61,6 @@ public class ChopTree_ACTION : Action
     public override void Reset()
     {
         state = EState.PERFORMING;
+        m_hasInteracted = false;
     }
 }

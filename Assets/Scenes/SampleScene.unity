@@ -155,6 +155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 608779270}
+  - {fileID: 890741647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &116278307
@@ -707,6 +708,9 @@ GameObject:
   - component: {fileID: 826355462}
   - component: {fileID: 826355463}
   - component: {fileID: 826355464}
+  - component: {fileID: 826355466}
+  - component: {fileID: 826355467}
+  - component: {fileID: 826355465}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -789,6 +793,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   priority: 0
+--- !u!195 &826355465
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826355458}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &826355466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826355458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1579cf3ab336ab24db219d4169004d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!114 &826355467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826355458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3a2b3864d809548b14a1cecd4e3998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!1 &890741646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4150729518734284287, guid: 1ef582da42d0d394f8290099dd036afc, type: 3}
+  m_PrefabInstance: {fileID: 1686265818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &890741647 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3661859901670608709, guid: 1ef582da42d0d394f8290099dd036afc, type: 3}
+  m_PrefabInstance: {fileID: 1686265818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,8 +1068,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 116278306}
     m_Modifications:
+    - target: {fileID: 2413400573382497966, guid: 1ef582da42d0d394f8290099dd036afc, type: 3}
+      propertyPath: m_interactionTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3661859901670608709, guid: 1ef582da42d0d394f8290099dd036afc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.4677672
@@ -1312,6 +1380,10 @@ PrefabInstance:
       propertyPath: m_visionRadius
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1808203907671149304, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: m_visionRadius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2864572901293901846, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1357,8 +1429,20 @@ PrefabInstance:
       value: Agent
       objectReference: {fileID: 0}
     - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: chest
+      value: 
+      objectReference: {fileID: 890741646}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: wanderRadius
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: maxWanderRadius
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: minWanderRadius
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9088219051710786736, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_ImplicitCom
@@ -1384,4 +1468,3 @@ SceneRoots:
   - {fileID: 1756549778}
   - {fileID: 308280732}
   - {fileID: 826355461}
-  - {fileID: 1686265818}

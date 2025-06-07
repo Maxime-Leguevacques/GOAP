@@ -16,7 +16,6 @@ public class Chest_SO : SmartObject
     
     protected override void Awake()
     {
-        m_interactionTime = 2.5f;
         m_audioSource = GetComponent<AudioSource>();
     }
 

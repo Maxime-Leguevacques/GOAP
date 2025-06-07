@@ -22,8 +22,11 @@ public class GoToTree_ACTION : Action
         // Priority
         // Preconditions
         preconditions["TreeIsVisible"] = true;
+        preconditions["IsGoingToTree"] = false;
         // Effects
         effects["TreeIsInRange"] = true;
+        effects["IsGoingToTree"] = true;    // Set as true but update it to false so planner
+                                            // doesn't loop on it.
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -39,6 +42,7 @@ public class GoToTree_ACTION : Action
 
     public override void Perform(GameObject _agent)
     {
+        _agent.GetComponent<Lumberjack_AI>().blackBoard["IsGoingToTree"] = true;
         if (!m_hasStarted)
         {
             m_navMeshAgent = _agent.GetComponent<NavMeshAgent>();
@@ -70,6 +74,8 @@ public class GoToTree_ACTION : Action
         {
             _blackBoard[effect.Key] = effect.Value;
         }
+
+        _blackBoard["IsGoingToTree"] = false;
     }
 
     public override void Reset()

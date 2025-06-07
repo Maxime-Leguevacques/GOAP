@@ -45,8 +45,10 @@ public class Lumberjack_AI : MonoBehaviour
         {
             { "TreeIsVisible", false },
             { "TreeIsInRange", false },
+            { "IsGoingToTree", false },
             { "HasWood", false },
-            { "IsWoodStored", false}
+            { "ChestIsInRange", false },
+            { "IsWoodStored", false }
         };
             
         m_goals = new();
@@ -119,26 +121,8 @@ public class Lumberjack_AI : MonoBehaviour
 
     public void AddGoal(KeyValuePair<string, object> _newGoal)
     {
-        if (!m_goals.ContainsKey(_newGoal.Key))
-        {
-            m_goals.Add(_newGoal.Key, _newGoal.Value);
-        }
-        else
-        {
-            m_goals[_newGoal.Key] = _newGoal.Value;
-        }
-        
-        // Plan
-        m_planner.Plan(blackBoard, m_goals);
-        if (m_planner.possiblePlans.Count > 0)
-        {
-            m_plannedActions = m_planner.possiblePlans[0];
-        }
-        else
-        {
-            Debug.LogWarning("No plan could be generated for the given goals.");
-            m_plannedActions.Clear();
-        }
+        m_goals[_newGoal.Key] = _newGoal.Value;
+        RePlan();
     }
 
     public void RePlan()

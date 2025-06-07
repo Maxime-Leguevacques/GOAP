@@ -1,3 +1,6 @@
-TreeIsVisible
-TreeIsInRange
-HasWood
+{ "TreeIsVisible", false },
+{ "TreeIsInRange", false },
+{ "IsGoingToTree", false },
+{ "HasWood", false },
+{ "ChestIsInRange", false },
+{ "IsWoodStored", false }

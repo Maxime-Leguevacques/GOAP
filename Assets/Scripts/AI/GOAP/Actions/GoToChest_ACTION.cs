@@ -21,20 +21,12 @@ public class GoToChest_ACTION : Action
     {
         // Priority
         // Preconditions
-        preconditions["HasWood"] = true;
         // Effects
-        effects["HasWood"] = false;
-        effects["IsWoodStored"] = true;
+        effects["ChestIsInRange"] = true;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
     {
-        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.blackBoard["HasWood"].Equals(false))
-        {
-            return false;
-        }
-
         return true;
     }
 

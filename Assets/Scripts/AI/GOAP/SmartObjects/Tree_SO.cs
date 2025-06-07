@@ -17,8 +17,6 @@ public class Tree_SO : SmartObject
     
     protected override void Awake()
     {
-        m_interactionTime = 5.0f;
-
         m_audioSource = GetComponent<AudioSource>();
     }
 

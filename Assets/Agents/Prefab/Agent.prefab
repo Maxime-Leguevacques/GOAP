@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 2556545136612837687}
   - component: {fileID: 101495274075610326}
   - component: {fileID: 9062797647878216277}
+  - component: {fileID: 5215521904160661460}
   - component: {fileID: 1495563572237812829}
   - component: {fileID: 1808203907671149304}
   m_Layer: 6
@@ -321,6 +322,7 @@ MonoBehaviour:
   minWanderRadius: 30
   maxWanderRadius: 70
   spottedTree: {fileID: 0}
+  isInteracting: 0
 --- !u!114 &2556545136612837687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +359,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a23d8375650124285ed68b10733de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!114 &5215521904160661460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1701004bde1ab4a97f0d37d96e6e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0

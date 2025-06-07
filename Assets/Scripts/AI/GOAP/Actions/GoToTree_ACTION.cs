@@ -66,7 +66,10 @@ public class GoToTree_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        _blackBoard["TreeIsInRange"] = true;
+        foreach (var effect in effects)
+        {
+            _blackBoard[effect.Key] = effect.Value;
+        }
     }
 
     public override void Reset()

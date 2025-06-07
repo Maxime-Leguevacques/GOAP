@@ -15,7 +15,7 @@ public class SpotTree_SENSOR : VisionsType_SENSOR
 
     private void OnTriggerEnter(Collider _other)
     {
-        if (_other.CompareTag("tree"))
+        if (_other.CompareTag("tree") && m_lumberjackAi.spottedTree == null)
         {
             isCollidingWithTree++;
             m_lumberjackAi.spottedTree = _other.gameObject;

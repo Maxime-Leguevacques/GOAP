@@ -10,6 +10,7 @@ public class CreateTrees : MonoBehaviour
     #region Variables
 
     private Terrain m_terrain;
+    private TreeInstance[] originalTrees;
 
     #endregion Variables
 
@@ -17,6 +18,7 @@ public class CreateTrees : MonoBehaviour
     private void Awake()
     {
         m_terrain = GetComponent<Terrain>();
+        originalTrees = m_terrain.terrainData.treeInstances;
     }
 
     void Start()
@@ -32,5 +34,16 @@ public class CreateTrees : MonoBehaviour
             GameObject treePrefab = treePrototypes[treeInstance.prototypeIndex].prefab;
             Instantiate(treePrefab, worldPos, Quaternion.identity);
         }
+        
+        // Remove all painted trees
+        terrainData.treeInstances = new TreeInstance[0];
+        m_terrain.Flush();
+    }
+
+    // On scene end, repopulate the terrain data again with the trees
+    private void OnDestroy()
+    {
+        m_terrain.terrainData.treeInstances = originalTrees;
+        m_terrain.Flush();
     }
 }

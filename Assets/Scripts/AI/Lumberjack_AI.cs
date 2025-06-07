@@ -26,6 +26,7 @@ public class Lumberjack_AI : MonoBehaviour
     public Dictionary<string, object> blackBoard;
 
     public GameObject spottedTree;
+    public bool isInteracting = false;
 
     #endregion Variables
 
@@ -39,7 +40,9 @@ public class Lumberjack_AI : MonoBehaviour
     {
         blackBoard = new()
         {
-            { "TreeIsVisible", false }
+            { "TreeIsVisible", false },
+            { "TreeIsInRange", false },
+            { "HasWood", false }
         };
             
         m_goals = new();

@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 826355460}
   - component: {fileID: 826355462}
   - component: {fileID: 826355463}
+  - component: {fileID: 826355464}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -772,7 +773,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a23d8375650124285ed68b10733de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
+  priority: 0
+--- !u!114 &826355464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826355458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1701004bde1ab4a97f0d37d96e6e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
   priority: 0
 --- !u!1 &963194225
 GameObject:
@@ -834,7 +849,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -860,13 +875,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.48296255, y: 0.2241435, z: -0.1294092, w: 0.83651674}
-  m_LocalPosition: {x: -4.6, y: 18.26, z: -6.97}
+  m_LocalRotation: {x: 0.4416792, y: 0.2127251, z: -0.10864621, w: 0.86479104}
+  m_LocalPosition: {x: -4.63, y: 18.26, z: -9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: 30, z: 0}
+  m_LocalEulerAnglesHint: {x: 54.11, y: 27.639, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0

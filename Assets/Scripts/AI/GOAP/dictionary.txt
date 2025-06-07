@@ -1,0 +1,3 @@
+TreeIsVisible
+TreeIsInRange
+HasWood

@@ -1303,14 +1303,6 @@ PrefabInstance:
       propertyPath: wanderRadius
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
-      propertyPath: maxWanderRadius
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
-      propertyPath: minWanderRadius
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 9088219051710786736, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_ImplicitCom
       value: 1

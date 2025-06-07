@@ -6,8 +6,8 @@ using UnityEngine;
 public class Planner : MonoBehaviour
 {
     #region Variables
-
-    [SerializeField] private const int MAX_DEPTH = 25;
+    
+    [SerializeField, Tooltip("Max depth of the plan")] private int MAX_DEPTH = 25;
     
     private List<Action> m_actionList;
     

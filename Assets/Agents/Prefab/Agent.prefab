@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minWanderRadius: 30
-  maxWanderRadius: 70
+  maxWanderRadius: 50
   spottedTree: {fileID: 0}
   isInteracting: 0
 --- !u!114 &2556545136612837687
@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0afc6fc171960d46b074a62fe06fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_DEPTH: 25
 --- !u!114 &101495274075610326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,4 +412,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  m_visionRadius: 50
+  m_visionRadius: 40

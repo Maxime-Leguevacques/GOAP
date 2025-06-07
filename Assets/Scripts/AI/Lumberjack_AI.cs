@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -144,7 +145,11 @@ public class Lumberjack_AI : MonoBehaviour
         m_planner.Plan(blackBoard, m_goals); 
         if (m_planner.possiblePlans.Count > 0)
         {
-            m_plannedActions = m_planner.possiblePlans[0];
+            // Get the smallest by number of actions
+            Queue<Action> smallestPlan = m_planner.possiblePlans.OrderBy(plan => plan.Count).FirstOrDefault();
+            // Get the cheapest by action cost
+            
+            m_plannedActions = smallestPlan;
 
             foreach (var action in m_plannedActions)
             {

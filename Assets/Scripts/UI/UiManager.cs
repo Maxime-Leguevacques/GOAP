@@ -22,6 +22,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject m_goalsVLG;
     [SerializeField] private GameObject m_goalTemplateElement;
 
+    private HashSet<string> m_createdGoalButtons = new();
+
     #endregion Variables
 
 
@@ -34,7 +36,11 @@ public class UiManager : MonoBehaviour
             foreach (var effect in m_actions[i].effects)
             {
                 string goalName = effect.Key;
-                CreateGoalButton(goalName);
+                if (!m_createdGoalButtons.Contains(goalName))
+                {
+                    CreateGoalButton(goalName);
+                    m_createdGoalButtons.Add(goalName);
+                }
             }
         }
     }

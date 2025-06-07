@@ -25,6 +25,8 @@ public class Lumberjack_AI : MonoBehaviour
     
     public Dictionary<string, object> blackBoard;
 
+    public GameObject spottedTree;
+
     #endregion Variables
 
 
@@ -35,7 +37,11 @@ public class Lumberjack_AI : MonoBehaviour
 
     private void Start()
     {
-        blackBoard = new();
+        blackBoard = new()
+        {
+            { "TreeIsVisible", false }
+        };
+            
         m_goals = new();
         
         // Plan
@@ -45,6 +51,7 @@ public class Lumberjack_AI : MonoBehaviour
 
     private void Update()
     {
+        // Update plan
         if (m_currenAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
         {
             m_currenAction = m_plannedActions.Dequeue();
@@ -53,13 +60,7 @@ public class Lumberjack_AI : MonoBehaviour
 
             if (!m_currenAction.CheckPreconditions(gameObject))
             {
-                m_currenAction = null;
-                m_plannedActions.Clear();
-                m_planner.Plan(blackBoard, m_goals);
-                if (m_planner.possiblePlans.Count > 0)
-                {
-                    m_plannedActions = m_planner.possiblePlans[0];
-                }
+                RePlan();
                 return; 
             }
         }
@@ -92,10 +93,7 @@ public class Lumberjack_AI : MonoBehaviour
             {
                 m_currenAction.UpdateBlackBoard(blackBoard);
                 
-                m_currenAction = null;
-                m_plannedActions.Clear();
-                m_planner.Plan(blackBoard, m_goals); 
-                m_plannedActions = m_planner.possiblePlans[0];
+                RePlan();
             }
         }
     }
@@ -136,15 +134,24 @@ public class Lumberjack_AI : MonoBehaviour
             m_plannedActions.Clear();
         }
     }
-    
+
+    public void RePlan()
+    {
+        m_currenAction = null;
+        m_plannedActions.Clear();
+        m_planner.Plan(blackBoard, m_goals); 
+        if (m_planner.possiblePlans.Count > 0)
+        {
+            m_plannedActions = m_planner.possiblePlans[0];
+        }
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, minWanderRadius);
         Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, minWanderRadius);
         Gizmos.DrawWireSphere(transform.position, maxWanderRadius);
         
-        Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(gameObject.GetComponent<NavMeshAgent>().destination, 1.0f);
     }
 }

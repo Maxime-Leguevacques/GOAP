@@ -15,15 +15,23 @@ public class WanderAround_ACTION : Action
     
     protected override void Awake()
     {
+        // Priority
         // Preconditions
+        preconditions["TreeIsVisible"] = false;
         // Effects
         // Set this effect so it can be used in plan
-        effects["BranchIsVisible"] = true;
+        effects["TreeIsVisible"] = true;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
     {
-        return true;
+        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
+        if (!lumberjackAi.blackBoard.ContainsKey("TreeIsVisible") || lumberjackAi.blackBoard["TreeIsVisible"].Equals(false))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public override void Perform(GameObject _agent)
@@ -66,7 +74,7 @@ public class WanderAround_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Set it to false so planner will re-perform it
-        _blackBoard["BranchIsVisible"] = false;
+        _blackBoard["TreeIsVisible"] = false;
     }
 
     public override void Reset()

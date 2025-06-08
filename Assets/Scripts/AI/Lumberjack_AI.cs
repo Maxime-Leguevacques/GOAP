@@ -53,7 +53,7 @@ public class Lumberjack_AI : MonoBehaviour
 
         m_goals = new()
         {
-            { "WoodStored", 2 }
+            { "WoodStored", 3 }
         };
         
         // Plan

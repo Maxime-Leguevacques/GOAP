@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6179101503579111714}
   - component: {fileID: 2738683600175288546}
   - component: {fileID: 8890038341520676885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gold Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7345434545127266326}
   - component: {fileID: 5181524394000796870}
   - component: {fileID: 8574990178446388607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gold ChestRoof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3661859901670608709}
   - component: {fileID: 8385925895069602322}
   - component: {fileID: 2413400573382497966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gold Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}

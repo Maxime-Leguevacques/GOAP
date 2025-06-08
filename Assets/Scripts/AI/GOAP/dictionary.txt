@@ -4,11 +4,3 @@
 { "HasWood", false },
 { "ChestIsInRange", false },
 { "WoodStored", 0 }
-
-
-{ "TreeIsVisible", false },
-{ "IsGoingToTree", false },
-{ "TreeIsInRange", false },
-{ "HasWood", true },
-{ "ChestIsInRange", false },
-{ "WoodStored", 0 }

@@ -16,7 +16,7 @@ public class Planner : MonoBehaviour
     #endregion Variables
 
 
-    private void Start()
+    private void Awake()
     {
         // Load actions
         m_actionList = new List<Action>(GetComponents<Action>());

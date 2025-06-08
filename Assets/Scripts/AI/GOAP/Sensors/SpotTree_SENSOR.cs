@@ -8,9 +8,6 @@ public class SpotTree_SENSOR : VisionsType_SENSOR
 {
     private void OnTriggerEnter(Collider _other)
     {
-        Debug.Log("tree: " + m_lumberjackAi.spottedTree);
-        Debug.Log("has wood: " + m_lumberjackAi.blackBoard["HasWood"]);
-        
         if (_other.CompareTag("tree") && m_lumberjackAi.spottedTree == null && m_lumberjackAi.blackBoard["HasWood"].Equals(false))
         {
             m_lumberjackAi.spottedTree = _other.gameObject;

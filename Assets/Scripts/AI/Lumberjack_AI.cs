@@ -16,7 +16,7 @@ public class Lumberjack_AI : MonoBehaviour
     // ########## PRIVATE ########## //
     private Planner m_planner;
     private Queue<Action> m_plannedActions = new();
-    private Action m_currenAction;
+    private Action m_currentAction;
 
     private Dictionary<string, object> m_goals;
     
@@ -63,33 +63,33 @@ public class Lumberjack_AI : MonoBehaviour
     private void Update()
     {
         // Update plan
-        if (m_currenAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
+        if (m_currentAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
         {
-            m_currenAction = m_plannedActions.Dequeue();
+            m_currentAction = m_plannedActions.Dequeue();
 
-            m_currenAction.Reset();
+            m_currentAction.Reset();
 
-            if (!m_currenAction.CheckPreconditions(gameObject))
+            if (!m_currentAction.CheckPreconditions(gameObject))
             {
                 RePlan();
                 return; 
             }
         }
 
-        if (m_currenAction != null)
+        if (m_currentAction != null)
         {
-            if (m_currenAction.state == Action.EState.PERFORMING)
+            if (m_currentAction.state == Action.EState.PERFORMING)
             {
-                m_currenAction.Perform(gameObject);    
+                m_currentAction.Perform(gameObject);    
             }
             
-            else if (m_currenAction.state == Action.EState.SUCCESSFUL)
+            else if (m_currentAction.state == Action.EState.SUCCESSFUL)
             {
                 // Update plan black board
-                m_currenAction.UpdateBlackBoard(blackBoard);
+                m_currentAction.UpdateBlackBoard(blackBoard);
                 
-                m_currenAction.Reset();
-                m_currenAction = null;
+                m_currentAction.Reset();
+                m_currentAction = null;
                 
                 // Check if goals are reached
                 if (CheckIfGoalsAreReached(blackBoard, m_goals))
@@ -104,11 +104,11 @@ public class Lumberjack_AI : MonoBehaviour
                 
             }
 
-            else if (m_currenAction.state == Action.EState.UNSUCCESSFUL)
+            else if (m_currentAction.state == Action.EState.UNSUCCESSFUL)
             {
-                m_currenAction.UpdateBlackBoard(blackBoard);
-                m_currenAction.Reset();
-                m_currenAction = null;
+                m_currentAction.UpdateBlackBoard(blackBoard);
+                m_currentAction.Reset();
+                m_currentAction = null;
                 RePlan();
             }
         }
@@ -135,7 +135,7 @@ public class Lumberjack_AI : MonoBehaviour
 
     public void RePlan()
     {
-        m_currenAction = null;
+        m_currentAction = null;
         m_plannedActions.Clear();
         m_planner.Plan(blackBoard, m_goals); 
         if (m_planner.possiblePlans.Count > 0)
@@ -148,7 +148,7 @@ public class Lumberjack_AI : MonoBehaviour
 
             foreach (var action in m_plannedActions)
             {
-                Debug.Log(action);
+                // Debug.Log(action);
             }
         }
     }

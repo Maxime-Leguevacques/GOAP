@@ -49,8 +49,6 @@ public class GoToChest_ACTION : Action
         {
             if (!m_navMeshAgent.hasPath || m_navMeshAgent.velocity.sqrMagnitude == 0f)
             {
-                // Arrived
-                UpdateBlackBoard(_agent.GetComponent<Lumberjack_AI>().blackBoard);
                 state = EState.SUCCESSFUL;
             }
         }

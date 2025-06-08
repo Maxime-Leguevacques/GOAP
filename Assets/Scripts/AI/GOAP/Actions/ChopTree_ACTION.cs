@@ -35,7 +35,6 @@ public class ChopTree_ACTION : Action
 
         if (!lumberjackAi.isInteracting)
         {
-            UpdateBlackBoard(lumberjackAi.blackBoard);
             state = EState.SUCCESSFUL;
         }
     }

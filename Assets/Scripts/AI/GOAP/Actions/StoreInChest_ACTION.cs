@@ -42,7 +42,6 @@ public class StoreInChest_ACTION : Action
 
         if (!lumberjackAi.isInteracting)
         {
-            UpdateBlackBoard(lumberjackAi.blackBoard);
             state = EState.SUCCESSFUL;
         }
     }
@@ -50,6 +49,7 @@ public class StoreInChest_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
+        Debug.Log("Real wood add");
         _blackBoard["HasWood"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }

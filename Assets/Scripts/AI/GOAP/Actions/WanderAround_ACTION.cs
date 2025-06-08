@@ -62,8 +62,6 @@ public class WanderAround_ACTION : Action
         {
             if (!m_navMeshAgent.hasPath || m_navMeshAgent.velocity.sqrMagnitude == 0f)
             {
-                // Arrived
-                UpdateBlackBoard(_agent.GetComponent<Lumberjack_AI>().blackBoard);
                 // Set to unsuccessful as a trick to make planner re-perform it
                 state = EState.UNSUCCESSFUL;
             }

@@ -24,11 +24,6 @@ public class GoToChest_ACTION : Action
         preconditions["ChestIsInRange"] = false;
     }
 
-    public override bool CheckPreconditions(GameObject _agent)
-    {
-        return true;
-    }
-
     public override void Perform(GameObject _agent)
     {
         if (!m_hasStarted)

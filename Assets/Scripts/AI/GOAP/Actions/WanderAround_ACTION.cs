@@ -22,17 +22,6 @@ public class WanderAround_ACTION : Action
         preconditions["HasWood"] = false;
     }
 
-    public override bool CheckPreconditions(GameObject _agent)
-    {
-        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (!lumberjackAi.blackBoard.ContainsKey("TreeIsVisible") || lumberjackAi.blackBoard["TreeIsVisible"].Equals(false))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     public override void Perform(GameObject _agent)
     {
         if (!m_hasStarted)

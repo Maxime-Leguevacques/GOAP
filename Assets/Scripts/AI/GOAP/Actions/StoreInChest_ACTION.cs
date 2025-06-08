@@ -19,18 +19,6 @@ public class StoreInChest_ACTION : Action
         preconditions["ChestIsInRange"] = true;
     }
 
-    public override bool CheckPreconditions(GameObject _agent)
-    {
-        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        // Check if agent is carrying wood and chest is in range
-        if (lumberjackAi.blackBoard["HasWood"].Equals(false) || lumberjackAi.blackBoard["ChestIsInRange"].Equals(false))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public override void Perform(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
@@ -49,7 +37,6 @@ public class StoreInChest_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        Debug.Log("Real wood add");
         _blackBoard["HasWood"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }

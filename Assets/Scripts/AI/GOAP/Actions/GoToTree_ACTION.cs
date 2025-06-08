@@ -25,17 +25,6 @@ public class GoToTree_ACTION : Action
         preconditions["IsGoingToTree"] = false;
     }
 
-    public override bool CheckPreconditions(GameObject _agent)
-    {
-        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.blackBoard["TreeIsVisible"].Equals(false))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public override void Perform(GameObject _agent)
     {
         _agent.GetComponent<Lumberjack_AI>().blackBoard["IsGoingToTree"] = true;
@@ -67,6 +56,7 @@ public class GoToTree_ACTION : Action
         // Effects
         _blackBoard["IsGoingToTree"] = false;    // Set to false so planner doesn't loop on during execution
         _blackBoard["TreeIsInRange"] = true;
+        _blackBoard["ChestIsInRange"] = false;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
@@ -74,6 +64,7 @@ public class GoToTree_ACTION : Action
         // Effects
         _blackBoard["IsGoingToTree"] = true;
         _blackBoard["TreeIsInRange"] = true;
+        _blackBoard["ChestIsInRange"] = false;
     }
 
     public override void Reset()

@@ -13,18 +13,6 @@ public class ChopTree_ACTION : Action
         preconditions["HasWood"] = false;
     }
 
-    public override bool CheckPreconditions(GameObject _agent)
-    {
-        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        // Check if tree is in range and if agent isn't already carrying wood
-        if (lumberjackAi.blackBoard["TreeIsInRange"].Equals(false) && lumberjackAi.blackBoard["HasWood"].Equals(true))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public override void Perform(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();

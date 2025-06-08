@@ -24,8 +24,20 @@ public abstract class Action : MonoBehaviour
     public Dictionary<string, object> preconditions = new();
 
     public abstract void Init(Dictionary<string, object> _blackBoard);
+
+    public bool CheckPreconditions(GameObject _agent)
+    {
+        Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
+        foreach (var precondition in preconditions)
+        {
+            if (!lumberjackAi.blackBoard[precondition.Key].Equals(precondition.Value))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     
-    public abstract bool CheckPreconditions(GameObject _agent);
     public abstract void Perform(GameObject _agent);
     public abstract void UpdateBlackBoard(Dictionary<string, object> _blackBoard);
     public abstract void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard);

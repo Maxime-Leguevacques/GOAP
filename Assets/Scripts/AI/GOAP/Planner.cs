@@ -94,12 +94,16 @@ public class Planner : MonoBehaviour
 
             Dictionary<string, object> recursiveBlackBoard = new Dictionary<string, object>(_blackBoard);
             Queue<Action> recursivePlan = new Queue<Action>(_plan);
+
+            // Clone action to be able to reuse the same action multiple times
+            // Action clonedAction = Instantiate(action);
+            // clonedAction.Init(recursiveBlackBoard);
             
             // Update blackboard
-            foreach (var effect in action.effects)
-            {
-                recursiveBlackBoard[effect.Key] = effect.Value;
-            }
+            // clonedAction.UpdatePlanBlackBoard(recursiveBlackBoard);
+            action.UpdatePlanBlackBoard(recursiveBlackBoard);
+            
+            // recursivePlan.Enqueue(clonedAction);
             recursivePlan.Enqueue(action);
 
             // Continue to generate plan

@@ -21,8 +21,7 @@ public class GoToChest_ACTION : Action
     {
         // Priority
         // Preconditions
-        // Effects
-        effects["ChestIsInRange"] = true;
+        preconditions["ChestIsInRange"] = false;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -59,10 +58,14 @@ public class GoToChest_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        foreach (var effect in effects)
-        {
-            _blackBoard[effect.Key] = effect.Value;
-        }
+        // Effects
+        _blackBoard["ChestIsInRange"] = true;
+    }
+
+    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["ChestIsInRange"] = true;
     }
 
     public override void Reset()

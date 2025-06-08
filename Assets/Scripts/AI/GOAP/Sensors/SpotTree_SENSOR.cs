@@ -6,20 +6,14 @@ using UnityEngine;
 
 public class SpotTree_SENSOR : VisionsType_SENSOR
 {
-    #region Variables
-
-    private int isCollidingWithTree = 0;
-
-    #endregion Variables
-
-
     private void OnTriggerEnter(Collider _other)
     {
-        if (_other.CompareTag("tree") && m_lumberjackAi.spottedTree == null)
+        Debug.Log("tree: " + m_lumberjackAi.spottedTree);
+        Debug.Log("has wood: " + m_lumberjackAi.blackBoard["HasWood"]);
+        
+        if (_other.CompareTag("tree") && m_lumberjackAi.spottedTree == null && m_lumberjackAi.blackBoard["HasWood"].Equals(false))
         {
-            isCollidingWithTree++;
             m_lumberjackAi.spottedTree = _other.gameObject;
-
             m_lumberjackAi.blackBoard["TreeIsVisible"] = true;
             m_lumberjackAi.RePlan();
         }
@@ -27,9 +21,11 @@ public class SpotTree_SENSOR : VisionsType_SENSOR
 
     private void OnTriggerExit(Collider _other)
     {
-        if (_other.CompareTag("tree"))
+        if (_other.CompareTag("tree") && m_lumberjackAi.spottedTree != null)
         {
-            isCollidingWithTree--;
+            // m_lumberjackAi.spottedTree = null;
+            // m_lumberjackAi.blackBoard["TreeIsVisible"] = false;
+            // m_lumberjackAi.RePlan();
         }    
     }
 }

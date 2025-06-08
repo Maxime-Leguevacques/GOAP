@@ -23,10 +23,6 @@ public class GoToTree_ACTION : Action
         // Preconditions
         preconditions["TreeIsVisible"] = true;
         preconditions["IsGoingToTree"] = false;
-        // Effects
-        effects["TreeIsInRange"] = true;
-        effects["IsGoingToTree"] = true;    // Set as true but update it to false so planner
-                                            // doesn't loop on it.
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -70,12 +66,16 @@ public class GoToTree_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        foreach (var effect in effects)
-        {
-            _blackBoard[effect.Key] = effect.Value;
-        }
+        // Effects
+        _blackBoard["IsGoingToTree"] = false;    // Set to false so planner doesn't loop on during execution
+        _blackBoard["TreeIsInRange"] = true;
+    }
 
-        _blackBoard["IsGoingToTree"] = false;
+    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["IsGoingToTree"] = true;
+        _blackBoard["TreeIsInRange"] = true;
     }
 
     public override void Reset()

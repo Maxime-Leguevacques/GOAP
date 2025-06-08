@@ -44,18 +44,16 @@ public class Lumberjack_AI : MonoBehaviour
         blackBoard = new()
         {
             { "TreeIsVisible", false },
-            { "TreeIsInRange", false },
             { "IsGoingToTree", false },
+            { "TreeIsInRange", false },
             { "HasWood", false },
             { "ChestIsInRange", false },
-            { "IsWoodStored", false },
             { "WoodStored", 0 }
         };
 
         m_goals = new()
         {
-            // { "IsWoodStored", true }
-            { "WoodStored", 1 }
+            { "WoodStored", 2 }
         };
         
         // Plan
@@ -87,12 +85,10 @@ public class Lumberjack_AI : MonoBehaviour
             
             else if (m_currenAction.state == Action.EState.SUCCESSFUL)
             {
-                // Update black board
-                foreach (var effect in m_currenAction.effects)
-                {
-                    blackBoard[effect.Key] = effect.Value;
-                }
+                // Update plan black board
+                m_currenAction.UpdateBlackBoard(blackBoard);
                 
+                m_currenAction.Reset();
                 m_currenAction = null;
                 
                 // Check if goals are reached
@@ -105,12 +101,14 @@ public class Lumberjack_AI : MonoBehaviour
                     Debug.Log("Goals Not Reached, Replanning !");
                     RePlan();
                 }
+                
             }
 
             else if (m_currenAction.state == Action.EState.UNSUCCESSFUL)
             {
                 m_currenAction.UpdateBlackBoard(blackBoard);
-                
+                m_currenAction.Reset();
+                m_currenAction = null;
                 RePlan();
             }
         }

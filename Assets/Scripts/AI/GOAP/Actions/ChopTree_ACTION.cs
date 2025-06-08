@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ChopTree_ACTION : Action
 {
     public override void Init(Dictionary<string, object> _blackBoard)
@@ -10,9 +11,6 @@ public class ChopTree_ACTION : Action
         // Preconditions
         preconditions["TreeIsInRange"] = true;
         preconditions["HasWood"] = false;
-        // Effects
-        effects["TreeIsInRange"] = false;
-        effects["HasWood"] = true;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -44,10 +42,20 @@ public class ChopTree_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        foreach (var effect in effects)
-        {
-            _blackBoard[effect.Key] = effect.Value;
-        }
+        // Effects
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["IsGoingToTree"] = false;
+        _blackBoard["TreeIsInRange"] = false;
+        _blackBoard["HasWood"] = true;
+    }
+
+    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["IsGoingToTree"] = false;
+        _blackBoard["TreeIsInRange"] = false;
+        _blackBoard["HasWood"] = true;
     }
 
     public override void Reset()

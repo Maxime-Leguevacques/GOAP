@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class WanderAround_ACTION : Action
 {
     #region Variables
@@ -18,9 +19,7 @@ public class WanderAround_ACTION : Action
         // Priority
         // Preconditions
         preconditions["TreeIsVisible"] = false;
-        // Effects
-        // Set this effect so it can be used in plan
-        effects["TreeIsVisible"] = true;
+        preconditions["HasWood"] = false;
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -73,8 +72,14 @@ public class WanderAround_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        // Set it to false so planner will re-perform it
-        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["TreeIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["ChestIsInRange"] = false;
+    }
+
+    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["TreeIsVisible"] = true;
+        _blackBoard["ChestIsInRange"] = false;
     }
 
     public override void Reset()

@@ -1,7 +1,14 @@
 { "TreeIsVisible", false },
-{ "TreeIsInRange", false },
 { "IsGoingToTree", false },
+{ "TreeIsInRange", false },
 { "HasWood", false },
 { "ChestIsInRange", false },
-{ "IsWoodStored", false }
+{ "WoodStored", 0 }
+
+
+{ "TreeIsVisible", false },
+{ "IsGoingToTree", false },
+{ "TreeIsInRange", false },
+{ "HasWood", true },
+{ "ChestIsInRange", false },
 { "WoodStored", 0 }

@@ -17,15 +17,6 @@ public class StoreInChest_ACTION : Action
         // Preconditions
         preconditions["HasWood"] = true;
         preconditions["ChestIsInRange"] = true;
-        // Effects
-        effects["HasWood"] = false;
-        effects["IsWoodStored"] = true;
-
-        int currentWoodStored = (int)_blackBoard["WoodStored"];
-        currentWoodStored++;
-        effects["WoodStored"] = currentWoodStored;   
-        // effects["WoodStored+1"] = true; // abstract effect for planning only
-
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -58,11 +49,15 @@ public class StoreInChest_ACTION : Action
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        foreach (var effect in effects)
-        {
-            _blackBoard[effect.Key] = effect.Value;
-        }
+        // Effects
+        _blackBoard["HasWood"] = false;
+        _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
+    }
 
+    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["HasWood"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 

@@ -17,7 +17,7 @@ public class GoToChest_ACTION : Action
     #endregion Variables
 
     
-    protected override void Awake()
+    public override void Init(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions

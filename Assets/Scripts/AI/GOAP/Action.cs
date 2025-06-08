@@ -24,7 +24,7 @@ public abstract class Action : MonoBehaviour
     public Dictionary<string, object> preconditions = new();
     public Dictionary<string, object> effects = new();
 
-    protected abstract void Awake();
+    public abstract void Init(Dictionary<string, object> _blackBoard);
     
     public abstract bool CheckPreconditions(GameObject _agent);
     public abstract void Perform(GameObject _agent);

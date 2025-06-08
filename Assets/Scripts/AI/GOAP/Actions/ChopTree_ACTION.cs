@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChopTree_ACTION : Action
 {
-    protected override void Awake()
+    public override void Init(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions

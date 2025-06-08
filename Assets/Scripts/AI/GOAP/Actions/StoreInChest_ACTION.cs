@@ -11,7 +11,7 @@ public class StoreInChest_ACTION : Action
     #endregion Variables
     
     
-    protected override void Awake()
+    public override void Init(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
@@ -20,6 +20,12 @@ public class StoreInChest_ACTION : Action
         // Effects
         effects["HasWood"] = false;
         effects["IsWoodStored"] = true;
+
+        int currentWoodStored = (int)_blackBoard["WoodStored"];
+        currentWoodStored++;
+        effects["WoodStored"] = currentWoodStored;   
+        // effects["WoodStored+1"] = true; // abstract effect for planning only
+
     }
 
     public override bool CheckPreconditions(GameObject _agent)
@@ -56,6 +62,8 @@ public class StoreInChest_ACTION : Action
         {
             _blackBoard[effect.Key] = effect.Value;
         }
+
+        _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 
     public override void Reset()

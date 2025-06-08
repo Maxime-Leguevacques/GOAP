@@ -27,7 +27,6 @@ public class Planner : MonoBehaviour
     public void Plan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals)
     {
         possiblePlans.Clear();
-        
         Queue<Action> plan = new();
         GeneratePlan(_blackBoard, _goals, plan);
     }
@@ -45,10 +44,21 @@ public class Planner : MonoBehaviour
         bool areGoalsMet = true;
         foreach (var goal in _goals)
         {
-            if (!_blackBoard.ContainsKey(goal.Key) || !_blackBoard[goal.Key].Equals(goal.Value))
+            // Bool check
+            if (goal.Value is bool && !_blackBoard[goal.Key].Equals(goal.Value))
             {
                 areGoalsMet = false;
                 break;
+            }
+            
+            // Int check
+            if (goal.Value is int goalInt && _blackBoard[goal.Key] is int blackBoardInt)
+            {
+                if (blackBoardInt < goalInt)
+                {
+                    areGoalsMet = false;
+                    break;
+                }
             }
         }
 
@@ -64,11 +74,12 @@ public class Planner : MonoBehaviour
         // Loop through all actions
         foreach (var action in m_actionList)
         {
+            action.Init(_blackBoard);
             bool arePreconditionsMet = true;
             // Check if blackboard meets all preconditions
             foreach (var precondition in action.preconditions)
             {
-                if (!_blackBoard.ContainsKey(precondition.Key) || !_blackBoard[precondition.Key].Equals(precondition.Value))
+                if (!_blackBoard[precondition.Key].Equals(precondition.Value))
                 {
                     arePreconditionsMet = false;
                     break;

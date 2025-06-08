@@ -48,10 +48,15 @@ public class Lumberjack_AI : MonoBehaviour
             { "IsGoingToTree", false },
             { "HasWood", false },
             { "ChestIsInRange", false },
-            { "IsWoodStored", false }
+            { "IsWoodStored", false },
+            { "WoodStored", 0 }
         };
-            
-        m_goals = new();
+
+        m_goals = new()
+        {
+            // { "IsWoodStored", true }
+            { "WoodStored", 1 }
+        };
         
         // Plan
         RePlan();
@@ -94,6 +99,11 @@ public class Lumberjack_AI : MonoBehaviour
                 if (CheckIfGoalsAreReached(blackBoard, m_goals))
                 {
                     Debug.Log("Goals Reached !");
+                }
+                else
+                {
+                    Debug.Log("Goals Not Reached, Replanning !");
+                    RePlan();
                 }
             }
 

@@ -4,3 +4,4 @@
 { "HasWood", false },
 { "ChestIsInRange", false },
 { "IsWoodStored", false }
+{ "WoodStored", 0 }

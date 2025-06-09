@@ -17,12 +17,13 @@ public class Ore_SO : SmartObject
     protected override void Awake()
     {
         m_audioSource = GetComponent<AudioSource>();
+        m_audioSource.clip = m_audioClip;
     }
 
     public override void Interact(GameObject _agent)
     {
         _agent.GetComponent<Lumberjack_AI>().isInteracting = true;
-        m_audioSource.PlayOneShot(m_audioClip);
+        m_audioSource.Play();
         StartCoroutine(Wait(m_interactionTime, _agent));
     }
     

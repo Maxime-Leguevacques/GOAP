@@ -16,10 +16,6 @@ public class SpotOre_SENSOR : VisionsType_SENSOR
 
     #endregion Variables
 
-    private void Start()
-    {
-        Debug.Log("IS INITIALIZED");
-    }
 
     private void OnTriggerEnter(Collider _other)
     {
@@ -33,7 +29,7 @@ public class SpotOre_SENSOR : VisionsType_SENSOR
                 if (m_lumberjackAi.targetGameObject == null && m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
                 {
                     // Check if we need the wood. If so, replan
-                    if (m_lumberjackAi.blackBoard["EnoughWoodStored"].Equals(false))
+                    if (m_lumberjackAi.blackBoard["EnoughOreStored"].Equals(false))
                     {
                         m_lumberjackAi.targetGameObject = m_ore;
                         m_lumberjackAi.RePlan();

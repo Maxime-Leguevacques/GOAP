@@ -23,6 +23,7 @@ public class SpotBranch_SENSOR : VisionsType_SENSOR
             if (_other.CompareTag("branch"))
             {
                 m_branch = _other.gameObject;
+                m_lumberjackAi.blackBoard["BranchIsVisible"] = true;
 
                 if (m_lumberjackAi.targetGameObject == null && m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
                 {

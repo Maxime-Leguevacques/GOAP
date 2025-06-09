@@ -30,6 +30,7 @@ public class WanderAround_ACTION : Action
         // Preconditions
         preconditions["TreeIsVisible"] = false;
         preconditions["BranchIsVisible"] = false;
+        preconditions["OreIsVisible"] = false;
         preconditions["IsCarryingObject"] = false;
     }
 

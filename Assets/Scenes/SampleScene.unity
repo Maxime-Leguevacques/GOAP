@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &79923267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4150729518734284287, guid: 1ef582da42d0d394f8290099dd036afc, type: 3}
+  m_PrefabInstance: {fileID: 1686265818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &116278305
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,11 +643,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101495274075610326, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_showDestination
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 101495274075610326, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_showWanderRadius
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 635423065430377543, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: m_showSpotTreeRadius
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1808203907671149304, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_visionRadius
@@ -708,6 +717,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent
       objectReference: {fileID: 0}
+    - target: {fileID: 6263887155210325191, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: m_showSpotOreRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511865555256700610, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: m_showSpotBranchRadius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8817905305961903777, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_visionRadius
       value: 20
@@ -716,6 +733,10 @@ PrefabInstance:
       propertyPath: m_showSpotBranchRadius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
+      propertyPath: chest
+      value: 
+      objectReference: {fileID: 79923267}
     - target: {fileID: 9008930106338708797, guid: c5b9c7902374552418cb2ea4f2a66d8a, type: 3}
       propertyPath: m_showDestination
       value: 0

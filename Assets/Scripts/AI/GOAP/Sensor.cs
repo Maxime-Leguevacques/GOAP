@@ -24,7 +24,7 @@ public abstract class Sensor : MonoBehaviour
 
     protected virtual void Awake()
     {
-        m_lumberjackAi = GetComponent<Lumberjack_AI>();
+        m_lumberjackAi = GetComponentInParent<Lumberjack_AI>();
     }
     
     public abstract void Update();

@@ -38,6 +38,7 @@ public class StoreInChest_ACTION : Action
     {
         // Effects
         _blackBoard["IsCarryingObject"] = false;
+        _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 
@@ -45,6 +46,7 @@ public class StoreInChest_ACTION : Action
     {
         // Effects
         _blackBoard["IsCarryingObject"] = false;
+        _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 

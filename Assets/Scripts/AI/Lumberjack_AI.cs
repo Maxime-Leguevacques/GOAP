@@ -39,6 +39,13 @@ public class Lumberjack_AI : MonoBehaviour
 
     private void Start()
     {
+        if (!chest)
+        {
+            Debug.LogError("ERROR: No chest given"); 
+            return;
+        }
+        
+        
         blackBoard = new()
         {
             { "TreeIsVisible", false },
@@ -70,6 +77,7 @@ public class Lumberjack_AI : MonoBehaviour
 
     private void Update()
     {
+        // Debug.Log(blackBoard);
         // Update plan
         if (m_currentAction == null && m_plannedActions != null && m_plannedActions.Count > 0)
         {

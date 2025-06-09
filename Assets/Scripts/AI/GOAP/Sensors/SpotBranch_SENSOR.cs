@@ -16,9 +16,9 @@ public class SpotBranch_SENSOR : VisionsType_SENSOR
     
     private void OnTriggerEnter(Collider _other)
     {
-        if (_other.CompareTag("branch") && 
-            m_lumberjackAi.targetGameObject == null &&  
-            m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
+        if (_other.CompareTag("branch") 
+            && m_lumberjackAi.targetGameObject == null  
+            && m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
         {
             m_lumberjackAi.targetGameObject = _other.gameObject;
             m_lumberjackAi.blackBoard["BranchIsVisible"] = true;

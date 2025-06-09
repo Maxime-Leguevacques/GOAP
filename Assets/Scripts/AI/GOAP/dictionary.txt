@@ -1,9 +1,16 @@
 { "TreeIsVisible", false },
-{ "BranchIsVisible", false },
-{ "IsGoingToTree", false },
-{ "IsGoingToBranch", false },
 { "TreeIsInRange", false },
+
+{ "BranchIsVisible", true },
 { "BranchIsInRange", false },
+
+{ "OreIsVisible", false },
+{ "OreIsInRange", false },
+
+{ "ChestIsInRange", true },
+
+{ "IsGoingSomewhere", true },
 { "IsCarryingObject", false },
-{ "ChestIsInRange", false },
-{ "WoodStored", 0 }
+
+{ "WoodStored", 1 },
+{ "OreStored", 0 }

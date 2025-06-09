@@ -103,7 +103,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -211,7 +211,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -232,11 +232,14 @@ GameObject:
   - component: {fileID: 2556545136612837687}
   - component: {fileID: 101495274075610326}
   - component: {fileID: 9062797647878216277}
+  - component: {fileID: 3801235239804632887}
   - component: {fileID: 5215521904160661460}
+  - component: {fileID: 6607076011155195243}
   - component: {fileID: 793586013343602077}
   - component: {fileID: 1505879687355867377}
   - component: {fileID: 1495563572237812829}
   - component: {fileID: 1808203907671149304}
+  - component: {fileID: 8817905305961903777}
   m_Layer: 6
   m_Name: Agent
   m_TagString: Untagged
@@ -269,12 +272,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 6154451504692118266}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -324,6 +327,7 @@ MonoBehaviour:
   minWanderRadius: 30
   maxWanderRadius: 50
   spottedTree: {fileID: 0}
+  spottedBranch: {fileID: 0}
   chest: {fileID: 0}
   isInteracting: 0
 --- !u!114 &2556545136612837687
@@ -367,6 +371,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   priority: 0
+--- !u!114 &3801235239804632887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d880c32068be7ca4c90fdbe1fcd701a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
 --- !u!114 &5215521904160661460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +395,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c1701004bde1ab4a97f0d37d96e6e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!114 &6607076011155195243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919fe5044c8b98b49946f2b28f8f58e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -440,6 +472,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b905035e483f044b228de384c46a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  m_visionRadius: 40
+--- !u!114 &8817905305961903777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52357a8ac8f5455429a90fcc10ce2e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0

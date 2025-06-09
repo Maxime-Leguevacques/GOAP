@@ -19,6 +19,7 @@ public class WanderAround_ACTION : Action
         // Priority
         // Preconditions
         preconditions["TreeIsVisible"] = false;
+        preconditions["BranchIsVisible"] = false;
         preconditions["HasWood"] = false;
     }
 
@@ -60,12 +61,14 @@ public class WanderAround_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["TreeIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["BranchIsVisible"] = false;    // Set it to false so planner will re-perform it
         _blackBoard["ChestIsInRange"] = false;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["TreeIsVisible"] = true;
+        _blackBoard["BranchIsVisible"] = true;
         _blackBoard["ChestIsInRange"] = false;
     }
 

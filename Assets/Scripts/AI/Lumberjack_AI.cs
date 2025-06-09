@@ -27,6 +27,7 @@ public class Lumberjack_AI : MonoBehaviour
     public Dictionary<string, object> blackBoard;
 
     [HideInInspector] public GameObject spottedTree;
+    [HideInInspector] public GameObject spottedBranch;
     [SerializeField] public GameObject chest;
     
     public bool isInteracting = false;
@@ -44,8 +45,11 @@ public class Lumberjack_AI : MonoBehaviour
         blackBoard = new()
         {
             { "TreeIsVisible", false },
+            { "BranchIsVisible", false },
             { "IsGoingToTree", false },
+            { "IsGoingToBranch", false },
             { "TreeIsInRange", false },
+            { "BranchIsInRange", false },
             { "HasWood", false },
             { "ChestIsInRange", false },
             { "WoodStored", 0 }
@@ -53,7 +57,7 @@ public class Lumberjack_AI : MonoBehaviour
 
         m_goals = new()
         {
-            { "WoodStored", 3 }
+            { "WoodStored", 2 }
         };
         
         // Plan
@@ -95,6 +99,7 @@ public class Lumberjack_AI : MonoBehaviour
                 if (CheckIfGoalsAreReached(blackBoard, m_goals))
                 {
                     Debug.Log("Goals Reached !");
+                    GetComponent<NavMeshAgent>().isStopped = true;
                 }
                 else
                 {
@@ -148,7 +153,7 @@ public class Lumberjack_AI : MonoBehaviour
 
             foreach (var action in m_plannedActions)
             {
-                // Debug.Log(action);
+                Debug.Log(action);
             }
         }
     }

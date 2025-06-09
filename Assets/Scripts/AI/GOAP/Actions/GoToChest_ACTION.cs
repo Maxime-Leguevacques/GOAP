@@ -53,12 +53,16 @@ public class GoToChest_ACTION : Action
     {
         // Effects
         _blackBoard["ChestIsInRange"] = true;
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["TreeIsInRange"] = false;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
         _blackBoard["ChestIsInRange"] = true;
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["TreeIsInRange"] = false;
     }
 
     public override void Reset()

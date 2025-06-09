@@ -26,7 +26,7 @@ public class GoToAction : Action
 
     public override void Perform(GameObject _agent)
     {
-        _agent.GetComponent<Lumberjack_AI>().blackBoard["IsHeadingSomewhere"] = true;
+        _agent.GetComponent<Lumberjack_AI>().blackBoard["IsGoingSomewhere"] = true;
         if (!m_hasStarted)
         {
             m_navMeshAgent = _agent.GetComponent<NavMeshAgent>();

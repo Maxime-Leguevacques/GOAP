@@ -63,12 +63,13 @@ public class Lumberjack_AI : MonoBehaviour
             { "IsGoingSomewhere", false },
             
             { "WoodStored", 0 },
-            { "OreStored", 0 }
+            { "OreStored", 0 },
         };
 
         m_goals = new()
         {
-            { "WoodStored", 2 }
+            { "WoodStored", 2 },
+            { "OreStored", 1}
         };
         
         // Plan

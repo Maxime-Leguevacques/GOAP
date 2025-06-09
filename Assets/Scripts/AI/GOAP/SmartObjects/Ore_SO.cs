@@ -30,6 +30,7 @@ public class Ore_SO : SmartObject
     {
         yield return new WaitForSeconds(_duration);
         _agent.GetComponent<Lumberjack_AI>().isInteracting = false;
+        _agent.GetComponent<Lumberjack_AI>().targetGameObject = null;
         Destroy(gameObject);
     }
 }

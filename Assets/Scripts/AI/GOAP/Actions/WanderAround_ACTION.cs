@@ -20,7 +20,7 @@ public class WanderAround_ACTION : Action
         // Preconditions
         preconditions["TreeIsVisible"] = false;
         preconditions["BranchIsVisible"] = false;
-        preconditions["HasWood"] = false;
+        preconditions["IsCarryingObject"] = false;
     }
 
     public override void Perform(GameObject _agent)

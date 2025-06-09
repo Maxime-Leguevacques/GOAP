@@ -4,6 +4,6 @@
 { "IsGoingToBranch", false },
 { "TreeIsInRange", false },
 { "BranchIsInRange", false },
-{ "HasWood", false },
+{ "IsCarryingObject", false },
 { "ChestIsInRange", false },
 { "WoodStored", 0 }

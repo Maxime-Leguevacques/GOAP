@@ -10,7 +10,7 @@ public class PickUpBranch_ACTION : Action
         // Priority
         // Preconditions
         preconditions["BranchIsInRange"] = true;
-        preconditions["HasWood"] = false;
+        preconditions["IsCarryingObject"] = false;
     }
 
     public override void Perform(GameObject _agent)
@@ -33,7 +33,7 @@ public class PickUpBranch_ACTION : Action
         _blackBoard["BranchIsVisible"] = false;
         _blackBoard["IsGoingToBranch"] = false;
         _blackBoard["BranchIsInRange"] = false;
-        _blackBoard["HasWood"] = true;
+        _blackBoard["IsCarryingObject"] = true;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
@@ -42,7 +42,7 @@ public class PickUpBranch_ACTION : Action
         _blackBoard["BranchIsVisible"] = false;
         _blackBoard["IsGoingToBranch"] = false;
         _blackBoard["BranchIsInRange"] = false;
-        _blackBoard["HasWood"] = true;
+        _blackBoard["IsCarryingObject"] = true;
     }
 
     public override void Reset()

@@ -15,7 +15,7 @@ public class StoreInChest_ACTION : Action
     {
         // Priority
         // Preconditions
-        preconditions["HasWood"] = true;
+        preconditions["IsCarryingObject"] = true;
         preconditions["ChestIsInRange"] = true;
     }
 
@@ -37,14 +37,14 @@ public class StoreInChest_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["HasWood"] = false;
+        _blackBoard["IsCarryingObject"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["HasWood"] = false;
+        _blackBoard["IsCarryingObject"] = false;
         _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
     }
 

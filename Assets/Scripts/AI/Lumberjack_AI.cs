@@ -108,7 +108,7 @@ public class Lumberjack_AI : MonoBehaviour
             else if (m_currentAction.state == Action.EState.SUCCESSFUL)
             {
                 // Update plan black board
-                m_currentAction.UpdateBlackBoard(blackBoard);
+                m_currentAction.UpdateBlackBoardSuccessful(blackBoard);
                 
                 m_currentAction.Reset();
                 m_currentAction = null;
@@ -139,7 +139,7 @@ public class Lumberjack_AI : MonoBehaviour
 
             else if (m_currentAction.state == Action.EState.UNSUCCESSFUL)
             {
-                m_currentAction.UpdateBlackBoard(blackBoard);
+                m_currentAction.UpdateBlackBoardUnsuccessful(blackBoard);
                 m_currentAction.Reset();
                 m_currentAction = null;
                 RePlan();
@@ -168,6 +168,7 @@ public class Lumberjack_AI : MonoBehaviour
 
     public void RePlan()
     {
+        Debug.Log("Replanning");
         m_currentAction = null;
         m_plannedActions.Clear();
         m_planner.Plan(blackBoard, m_goals); 

@@ -34,7 +34,15 @@ public class StoreInChestAction : Action
         }
     }
 
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["IsGoingSomewhere"] = false;
+        _blackBoard["CarriedObject"] = "";
+        _blackBoard["IsCarryingObject"] = false;
+    }
+
+    public override void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard)
     {
         // Effects
         _blackBoard["IsGoingSomewhere"] = false;

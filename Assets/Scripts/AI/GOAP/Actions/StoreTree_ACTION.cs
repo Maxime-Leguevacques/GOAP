@@ -11,7 +11,7 @@ public class StoreTree_ACTION : StoreInChestAction
         preconditions["CarriedObject"] = "tree";
     }
     
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
     {
         // Update storage
         if (_blackBoard["CarriedObject"] != null)
@@ -23,7 +23,7 @@ public class StoreTree_ACTION : StoreInChestAction
             }
         }
         
-        base.UpdateBlackBoard(_blackBoard);
+        base.UpdateBlackBoardSuccessful(_blackBoard);
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)

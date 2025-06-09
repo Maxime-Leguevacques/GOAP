@@ -53,7 +53,18 @@ public class GoToAction : Action
         }
     }
 
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["IsGoingSomewhere"] = false;    // Set to false so planner doesn't loop on during execution
+        
+        // Set everything not in range and change it in the action
+        _blackBoard["TreeIsInRange"] = false;
+        _blackBoard["BranchIsInRange"] = false;
+        _blackBoard["OreIsInRange"] = false;
+        _blackBoard["ChestIsInRange"] = false;
+    }
+
+    public override void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["IsGoingSomewhere"] = false;    // Set to false so planner doesn't loop on during execution
         

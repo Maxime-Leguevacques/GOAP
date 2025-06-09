@@ -69,7 +69,15 @@ public class WanderAround_ACTION : Action
         }
     }
 
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["TreeIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["BranchIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["OreIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["ChestIsInRange"] = false;
+    }
+
+    public override void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["TreeIsVisible"] = false;    // Set it to false so planner will re-perform it
         _blackBoard["BranchIsVisible"] = false;    // Set it to false so planner will re-perform it

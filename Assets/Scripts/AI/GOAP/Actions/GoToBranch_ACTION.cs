@@ -13,9 +13,9 @@ public class GoToBranch_ACTION : GoToAction
         preconditions["BranchIsVisible"] = true;
     }
 
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
     {
-        base.UpdateBlackBoard(_blackBoard);
+        base.UpdateBlackBoardSuccessful(_blackBoard);
         // Effects
         _blackBoard["BranchIsInRange"] = true;
     }

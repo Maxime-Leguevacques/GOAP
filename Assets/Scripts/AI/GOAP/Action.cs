@@ -39,7 +39,8 @@ public abstract class Action : MonoBehaviour
     }
     
     public abstract void Perform(GameObject _agent);
-    public abstract void UpdateBlackBoard(Dictionary<string, object> _blackBoard);
+    public abstract void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard);
+    public abstract void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard);
     public abstract void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard);
 
     public abstract void Reset();

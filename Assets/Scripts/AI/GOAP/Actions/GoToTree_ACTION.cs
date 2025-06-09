@@ -15,9 +15,16 @@ public class GoToTree_ACTION : GoToAction
         preconditions["TreeIsVisible"] = true;
     }
 
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
     {
-        base.UpdateBlackBoard(_blackBoard);
+        base.UpdateBlackBoardSuccessful(_blackBoard);
+        // Effects
+        _blackBoard["TreeIsInRange"] = true;
+    }
+
+    public override void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard)
+    {
+        base.UpdateBlackBoardUnsuccessful(_blackBoard);
         // Effects
         _blackBoard["TreeIsInRange"] = true;
     }

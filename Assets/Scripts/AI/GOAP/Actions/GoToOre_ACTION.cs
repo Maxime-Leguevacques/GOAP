@@ -12,9 +12,9 @@ public class GoToOre_ACTION : GoToAction
         preconditions["OreIsVisible"] = true;
     }
     
-    public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
     {
-        base.UpdateBlackBoard(_blackBoard);
+        base.UpdateBlackBoardSuccessful(_blackBoard);
         // Effects
         _blackBoard["OreIsInRange"] = true;
     }

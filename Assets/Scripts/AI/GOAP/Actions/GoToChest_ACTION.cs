@@ -5,20 +5,11 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class GoToChest_ACTION : Action
+public class GoToChest_ACTION : GoToAction
 {
-    #region Variables
-
-    private GameObject m_tree;
-    
-    private bool m_hasStarted = false;
-    private NavMeshAgent m_navMeshAgent;
-    
-    #endregion Variables
-
-    
     public override void Init(Dictionary<string, object> _blackBoard)
     {
+        base.Init(_blackBoard);
         // Priority
         // Preconditions
         preconditions["ChestIsInRange"] = false;
@@ -26,48 +17,27 @@ public class GoToChest_ACTION : Action
 
     public override void Perform(GameObject _agent)
     {
+        // Set chest as target first before performing
         if (!m_hasStarted)
         {
-            m_navMeshAgent = _agent.GetComponent<NavMeshAgent>();
-            if (m_navMeshAgent == null)
-            {
-                return;
-            }
-
-            m_navMeshAgent.SetDestination(_agent.GetComponent<Lumberjack_AI>().chest.transform.position);
-
-            m_hasStarted = true;
+            Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
+            lumberjackAi.targetGameObject = lumberjackAi.chest;
         }
         
-        // Check if agent reached destination
-        if (!m_navMeshAgent.pathPending && m_navMeshAgent.remainingDistance <= m_navMeshAgent.stoppingDistance)
-        {
-            if (!m_navMeshAgent.hasPath || m_navMeshAgent.velocity.sqrMagnitude == 0f)
-            {
-                state = EState.SUCCESSFUL;
-            }
-        }
+        base.Perform(_agent);
     }
 
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
+        base.UpdateBlackBoard(_blackBoard);
         // Effects
         _blackBoard["ChestIsInRange"] = true;
-        _blackBoard["TreeIsVisible"] = false;
-        _blackBoard["TreeIsInRange"] = false;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
+        base.UpdatePlanBlackBoard(_blackBoard);
         // Effects
         _blackBoard["ChestIsInRange"] = true;
-        _blackBoard["TreeIsVisible"] = false;
-        _blackBoard["TreeIsInRange"] = false;
-    }
-
-    public override void Reset()
-    {
-        state = EState.PERFORMING;
-        m_hasStarted = false;
     }
 }

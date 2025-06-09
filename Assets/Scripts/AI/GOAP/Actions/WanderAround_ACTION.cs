@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
 public class WanderAround_ACTION : Action
@@ -10,6 +12,14 @@ public class WanderAround_ACTION : Action
 
     private bool m_hasStarted = false;
     private NavMeshAgent m_navMeshAgent;
+
+    [SerializeField] private float m_minWanderRadius = 25.0f;
+    [SerializeField] private float m_maxWanderRadius = 40.0f;
+    
+    // ########## DEBUG ########## //
+    [Header("Debug")]
+    [SerializeField] private bool m_showWanderRadius = false;
+    [SerializeField] private bool m_showDestination = false;
     
     #endregion Variables
     
@@ -34,7 +44,7 @@ public class WanderAround_ACTION : Action
             }
 
             Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-            float radius = Random.Range(lumberjackAi.minWanderRadius, lumberjackAi.maxWanderRadius);
+            float radius = Random.Range(m_minWanderRadius, m_maxWanderRadius);
             Vector2 randomDir2D = Random.insideUnitCircle.normalized;
             Vector3 randomDir3D = new Vector3(randomDir2D.x, 0.0f, randomDir2D.y) * radius;
             randomDir3D += _agent.transform.position;
@@ -76,5 +86,21 @@ public class WanderAround_ACTION : Action
     {
         state = EState.PERFORMING;
         m_hasStarted = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        if (m_showWanderRadius)
+        {
+            Gizmos.DrawWireSphere(transform.position, m_minWanderRadius);
+            Gizmos.DrawWireSphere(transform.position, m_maxWanderRadius);
+            
+        }
+        
+        if (m_showDestination)
+        {
+            Gizmos.DrawSphere(gameObject.GetComponent<NavMeshAgent>().destination, 1.0f);
+        }
     }
 }

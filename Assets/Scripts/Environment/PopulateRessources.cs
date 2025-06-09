@@ -17,6 +17,9 @@ public class PopulateRessources : MonoBehaviour
     [SerializeField] private float minRadius = 30;
     [SerializeField] private float maxRadius = 100;
 
+    [Header("Debug")] 
+    [SerializeField] private bool m_showRadius = false;
+
     #endregion Variables
 
 
@@ -75,7 +78,10 @@ public class PopulateRessources : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere((transform.position + new Vector3(500, 0, 500)), minRadius);
-        Gizmos.DrawWireSphere((transform.position + new Vector3(500, 0, 500)), maxRadius);
+        if (m_showRadius)
+        {
+            Gizmos.DrawWireSphere((transform.position + new Vector3(500, 0, 500)), minRadius);
+            Gizmos.DrawWireSphere((transform.position + new Vector3(500, 0, 500)), maxRadius);
+        }
     }
 }

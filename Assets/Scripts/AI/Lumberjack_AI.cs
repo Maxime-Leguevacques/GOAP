@@ -21,14 +21,10 @@ public class Lumberjack_AI : MonoBehaviour
     private Dictionary<string, object> m_goals;
     
     // ########## PUBLIC ########## //
-    [SerializeField] public float  minWanderRadius = 25.0f;
-    [SerializeField] public float  maxWanderRadius = 40.0f;
     
     public Dictionary<string, object> blackBoard;
 
-    [HideInInspector] public GameObject spottedTree;
-    [HideInInspector] public GameObject spottedBranch;
-    [HideInInspector] public GameObject spottedOre;
+    [HideInInspector] public GameObject targetGameObject;
     [SerializeField] public GameObject chest;
     
     public bool isInteracting = false;
@@ -46,21 +42,18 @@ public class Lumberjack_AI : MonoBehaviour
         blackBoard = new()
         {
             { "TreeIsVisible", false },
-            { "IsGoingToTree", false },
             { "TreeIsInRange", false },
             
             { "BranchIsVisible", false },
-            { "IsGoingToBranch", false },
             { "BranchIsInRange", false },
             
             { "OreIsVisible", false },
-            { "IsGoingToOre", false },
             { "OreIsInRange", false },
             
-            { "IsCarryingObject", false },
-            
-            { "IsGoingToChest", false },
             { "ChestIsInRange", false },
+            
+            { "IsCarryingObject", false },
+            { "IsGoingSomewhere", false },
             
             { "WoodStored", 0 },
             { "OreStored", 0 }
@@ -68,7 +61,7 @@ public class Lumberjack_AI : MonoBehaviour
 
         m_goals = new()
         {
-            { "WoodStored", 1 }
+            { "WoodStored", 2 }
         };
         
         // Plan
@@ -167,15 +160,5 @@ public class Lumberjack_AI : MonoBehaviour
                 // Debug.Log(action);
             }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, minWanderRadius);
-        Gizmos.DrawWireSphere(transform.position, maxWanderRadius);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(gameObject.GetComponent<NavMeshAgent>().destination, 1.0f);
     }
 }

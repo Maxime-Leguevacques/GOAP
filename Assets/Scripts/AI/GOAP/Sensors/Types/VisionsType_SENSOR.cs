@@ -12,7 +12,7 @@ public abstract class VisionsType_SENSOR : Sensor
     protected SphereCollider m_sphereCollider;
     
     [SerializeField] protected float m_visionRadius = 50.0f;
-
+    
     #endregion Variables
 
     protected override void Awake()

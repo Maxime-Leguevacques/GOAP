@@ -231,18 +231,18 @@ GameObject:
   - component: {fileID: 9008930106338708797}
   - component: {fileID: 2556545136612837687}
   - component: {fileID: 101495274075610326}
-  - component: {fileID: 9062797647878216277}
   - component: {fileID: 3801235239804632887}
-  - component: {fileID: 3152943134544860109}
-  - component: {fileID: 5215521904160661460}
   - component: {fileID: 6607076011155195243}
-  - component: {fileID: 6691063129533738302}
+  - component: {fileID: 9062797647878216277}
+  - component: {fileID: 5215521904160661460}
+  - component: {fileID: 3740906671631150195}
+  - component: {fileID: 812628095086443272}
   - component: {fileID: 793586013343602077}
   - component: {fileID: 1505879687355867377}
   - component: {fileID: 1495563572237812829}
-  - component: {fileID: 1808203907671149304}
   - component: {fileID: 8817905305961903777}
-  - component: {fileID: 7087972943805115870}
+  - component: {fileID: 1808203907671149304}
+  - component: {fileID: 4430239186088071264}
   m_Layer: 6
   m_Name: Agent
   m_TagString: Untagged
@@ -327,11 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549eb54fc95e2204b956b7304ae46450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWanderRadius: 30
-  maxWanderRadius: 50
-  spottedTree: {fileID: 0}
-  spottedBranch: {fileID: 0}
-  spottedOre: {fileID: 0}
+  targetGameObject: {fileID: 0}
   chest: {fileID: 0}
   isInteracting: 0
 --- !u!114 &2556545136612837687
@@ -361,20 +357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   priority: 0
---- !u!114 &9062797647878216277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154451504692118266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a23d8375650124285ed68b10733de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  priority: 0
+  m_minWanderRadius: 25
+  m_maxWanderRadius: 40
+  m_showWanderRadius: 0
+  m_showDestination: 0
 --- !u!114 &3801235239804632887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,34 +371,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d880c32068be7ca4c90fdbe1fcd701a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  priority: 0
---- !u!114 &3152943134544860109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154451504692118266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e26d47a1f621b34d9e9eb3475ba8342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 1
-  priority: 0
---- !u!114 &5215521904160661460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154451504692118266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1701004bde1ab4a97f0d37d96e6e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
@@ -431,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   priority: 0
---- !u!114 &6691063129533738302
+--- !u!114 &9062797647878216277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,7 +398,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 6154451504692118266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2828fb5a3357deb48adda5f0f526bf91, type: 3}
+  m_Script: {fileID: 11500000, guid: 98a23d8375650124285ed68b10733de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!114 &5215521904160661460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1701004bde1ab4a97f0d37d96e6e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  priority: 0
+--- !u!114 &3740906671631150195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d32851296a76341b6fecfffeaa8a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
+  priority: 0
+--- !u!114 &812628095086443272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066c00a24fd0c154a82b458f3646f375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
@@ -494,20 +494,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1808203907671149304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154451504692118266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b905035e483f044b228de384c46a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  m_visionRadius: 40
 --- !u!114 &8817905305961903777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,8 +507,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  m_visionRadius: 40
---- !u!114 &7087972943805115870
+  m_visionRadius: 20
+  m_showSpotBranchRadius: 0
+--- !u!114 &1808203907671149304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b905035e483f044b228de384c46a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  m_visionRadius: 35
+  m_showSpotTreeRadius: 0
+--- !u!114 &4430239186088071264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,4 +537,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  m_visionRadius: 55
+  m_visionRadius: 50
+  m_showSpotOreRadius: 0

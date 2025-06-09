@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class PickUpBranch_ACTION : Action
+public class MineOre_ACTION : Action
 {
     public override void Init(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
-        preconditions["BranchIsInRange"] = true;
+        preconditions["OreIsInRange"] = true;
         preconditions["IsCarryingObject"] = false;
     }
 
@@ -18,7 +17,7 @@ public class PickUpBranch_ACTION : Action
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
         if (lumberjackAi.targetGameObject != null && !lumberjackAi.isInteracting)
         {
-            lumberjackAi.targetGameObject.GetComponent<Branch_SO>().Interact(_agent);
+            lumberjackAi.targetGameObject.GetComponent<Tree_SO>().Interact(_agent);
         }
 
         if (!lumberjackAi.isInteracting)
@@ -30,8 +29,8 @@ public class PickUpBranch_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["BranchIsVisible"] = false;
-        _blackBoard["BranchIsInRange"] = false;
+        _blackBoard["OreIsVisible"] = false;
+        _blackBoard["OreIsInRange"] = false;
         
         _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;
@@ -40,8 +39,8 @@ public class PickUpBranch_ACTION : Action
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["BranchIsVisible"] = false;
-        _blackBoard["BranchIsInRange"] = false;
+        _blackBoard["OreIsVisible"] = false;
+        _blackBoard["OreIsInRange"] = false;
         
         _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;

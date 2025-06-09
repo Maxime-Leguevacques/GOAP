@@ -16,9 +16,9 @@ public class ChopTree_ACTION : Action
     public override void Perform(GameObject _agent)
     {
         Lumberjack_AI lumberjackAi = _agent.GetComponent<Lumberjack_AI>();
-        if (lumberjackAi.spottedTree != null && !lumberjackAi.isInteracting)
+        if (lumberjackAi.targetGameObject != null && !lumberjackAi.isInteracting)
         {
-            lumberjackAi.spottedTree.GetComponent<Tree_SO>().Interact(_agent);
+            lumberjackAi.targetGameObject.GetComponent<Tree_SO>().Interact(_agent);
         }
 
         if (!lumberjackAi.isInteracting)
@@ -31,8 +31,9 @@ public class ChopTree_ACTION : Action
     {
         // Effects
         _blackBoard["TreeIsVisible"] = false;
-        _blackBoard["IsGoingToTree"] = false;
         _blackBoard["TreeIsInRange"] = false;
+        
+        _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;
     }
 
@@ -40,8 +41,9 @@ public class ChopTree_ACTION : Action
     {
         // Effects
         _blackBoard["TreeIsVisible"] = false;
-        _blackBoard["IsGoingToTree"] = false;
         _blackBoard["TreeIsInRange"] = false;
+        
+        _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;
     }
 

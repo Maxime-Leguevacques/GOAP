@@ -12,6 +12,8 @@ public class PopulateRessources : MonoBehaviour
 
     [SerializeField] private GameObject[] branches;
     [SerializeField] private int branchCount = 100;
+    [SerializeField] private GameObject[] ores;
+    [SerializeField] private int oreCount = 35;
     [SerializeField] private float minRadius = 30;
     [SerializeField] private float maxRadius = 100;
 
@@ -20,7 +22,13 @@ public class PopulateRessources : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < branchCount; i++)
+        PopulateBranches(branchCount);
+        PopulateOres(oreCount);
+    }
+
+    private void PopulateBranches(int _branchCount)
+    {
+        for (int i = 0; i < _branchCount; i++)
         {
             Vector3 randomPos = GetRandomPosOnNavMesh();
             if (randomPos != Vector3.zero)
@@ -31,7 +39,20 @@ public class PopulateRessources : MonoBehaviour
             }
         }
     }
-
+    
+    private void PopulateOres(int _oreCount)
+    {
+        for (int i = 0; i < _oreCount; i++)
+        {
+            Vector3 randomPos = GetRandomPosOnNavMesh();
+            if (randomPos != Vector3.zero)
+            {
+                float randomRot = Random.Range(0, 360);
+                GameObject orePrefab = ores[Random.Range(0, ores.Length)];
+                Instantiate(orePrefab, randomPos, Quaternion.Euler(0, randomRot, 0));
+            }
+        }
+    }
 
     private Vector3 GetRandomPosOnNavMesh()
     {

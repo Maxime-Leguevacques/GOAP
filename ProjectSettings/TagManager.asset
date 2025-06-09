@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tree
   - branch
+  - ore
   layers:
   - Default
   - TransparentFX

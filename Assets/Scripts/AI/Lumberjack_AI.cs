@@ -153,7 +153,7 @@ public class Lumberjack_AI : MonoBehaviour
 
             foreach (var action in m_plannedActions)
             {
-                Debug.Log(action);
+                // Debug.Log(action);
             }
         }
     }

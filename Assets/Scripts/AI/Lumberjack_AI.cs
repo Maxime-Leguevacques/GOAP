@@ -28,6 +28,7 @@ public class Lumberjack_AI : MonoBehaviour
 
     [HideInInspector] public GameObject spottedTree;
     [HideInInspector] public GameObject spottedBranch;
+    [HideInInspector] public GameObject spottedOre;
     [SerializeField] public GameObject chest;
     
     public bool isInteracting = false;
@@ -45,19 +46,30 @@ public class Lumberjack_AI : MonoBehaviour
         blackBoard = new()
         {
             { "TreeIsVisible", false },
-            { "BranchIsVisible", false },
             { "IsGoingToTree", false },
-            { "IsGoingToBranch", false },
             { "TreeIsInRange", false },
+            
+            { "BranchIsVisible", false },
+            { "IsGoingToBranch", false },
             { "BranchIsInRange", false },
-            { "HasWood", false },
+            
+            { "OreIsVisible", false },
+            { "IsGoingToOre", false },
+            { "OreIsInRange", false },
+            
+            { "IsCarryingObject", false },
+            
+            { "IsGoingToChest", false },
             { "ChestIsInRange", false },
-            { "WoodStored", 0 }
+            
+            { "WoodStored", 0 },
+            { "OreStored", 0 }
         };
 
         m_goals = new()
         {
-            { "WoodStored", 2 }
+            { "WoodStored", 1 }
+            // { "OreStored", 1 }
         };
         
         // Plan

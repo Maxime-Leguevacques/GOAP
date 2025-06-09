@@ -10,7 +10,8 @@ public class SpotBranch_SENSOR : VisionsType_SENSOR
         if (_other.CompareTag("branch") && 
             m_lumberjackAi.spottedBranch == null && 
             m_lumberjackAi.spottedTree == null &&     // To not change path
-            m_lumberjackAi.blackBoard["HasWood"].Equals(false))
+            m_lumberjackAi.spottedOre == null &&     // To not change path
+            m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
         {
             m_lumberjackAi.spottedBranch = _other.gameObject;
             m_lumberjackAi.blackBoard["BranchIsVisible"] = true;

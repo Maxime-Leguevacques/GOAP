@@ -233,13 +233,16 @@ GameObject:
   - component: {fileID: 101495274075610326}
   - component: {fileID: 9062797647878216277}
   - component: {fileID: 3801235239804632887}
+  - component: {fileID: 3152943134544860109}
   - component: {fileID: 5215521904160661460}
   - component: {fileID: 6607076011155195243}
+  - component: {fileID: 6691063129533738302}
   - component: {fileID: 793586013343602077}
   - component: {fileID: 1505879687355867377}
   - component: {fileID: 1495563572237812829}
   - component: {fileID: 1808203907671149304}
   - component: {fileID: 8817905305961903777}
+  - component: {fileID: 7087972943805115870}
   m_Layer: 6
   m_Name: Agent
   m_TagString: Untagged
@@ -328,6 +331,7 @@ MonoBehaviour:
   maxWanderRadius: 50
   spottedTree: {fileID: 0}
   spottedBranch: {fileID: 0}
+  spottedOre: {fileID: 0}
   chest: {fileID: 0}
   isInteracting: 0
 --- !u!114 &2556545136612837687
@@ -385,6 +389,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   priority: 0
+--- !u!114 &3152943134544860109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e26d47a1f621b34d9e9eb3475ba8342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
+  priority: 0
 --- !u!114 &5215521904160661460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +430,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  priority: 0
+--- !u!114 &6691063129533738302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2828fb5a3357deb48adda5f0f526bf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
   priority: 0
 --- !u!114 &793586013343602077
 MonoBehaviour:
@@ -490,3 +522,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   m_visionRadius: 40
+--- !u!114 &7087972943805115870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154451504692118266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d221ae2ab477a34481bc34254345fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  m_visionRadius: 55

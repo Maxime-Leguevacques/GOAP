@@ -7,7 +7,7 @@ public class Planner : MonoBehaviour
 {
     #region Variables
     
-    [SerializeField, Tooltip("Max depth of the plan")] private int MAX_DEPTH = 25;
+    [SerializeField, Tooltip("Max depth of the plan")] private int MAX_DEPTH = 50;
     
     private List<Action> m_actionList;
     
@@ -35,7 +35,7 @@ public class Planner : MonoBehaviour
     private void GeneratePlan(Dictionary<string, object> _blackBoard, Dictionary<string, object> _goals, Queue<Action> _plan, int _depth = 0)
     {
         // Check if we are before the depth limit
-        if (_depth > MAX_DEPTH)
+        if (_depth >= MAX_DEPTH)
         {
             return;    
         }

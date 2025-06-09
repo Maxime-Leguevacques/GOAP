@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class StoreTree_ACTION : StoreInChestAction
 {
+    public override void Init(Dictionary<string, object> _blackBoard)
+    {
+        base.Init(_blackBoard);
+
+        preconditions["CarriedObject"] = "tree";
+    }
+    
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Update storage

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoreInChest_ACTION : Action
+public class StoreInChestAction : Action
 {
     #region Variables
 
@@ -37,17 +37,17 @@ public class StoreInChest_ACTION : Action
     public override void UpdateBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["IsCarryingObject"] = false;
         _blackBoard["IsGoingSomewhere"] = false;
-        _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
+        _blackBoard["CarriedObject"] = "";
+        _blackBoard["IsCarryingObject"] = false;
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
-        _blackBoard["IsCarryingObject"] = false;
         _blackBoard["IsGoingSomewhere"] = false;
-        _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 1;
+        _blackBoard["CarriedObject"] = "";
+        _blackBoard["IsCarryingObject"] = false;
     }
 
     public override void Reset()

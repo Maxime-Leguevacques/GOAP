@@ -7,6 +7,8 @@ public class SpotTree_SENSOR : VisionsType_SENSOR
 {
     #region Variables
 
+    private GameObject m_tree;
+    
     // ########## DEBUG ########## //
     [Header("Debug")]
     [SerializeField] private bool m_showSpotTreeRadius = false;
@@ -16,24 +18,33 @@ public class SpotTree_SENSOR : VisionsType_SENSOR
     
     private void OnTriggerEnter(Collider _other)
     {
-        if (_other.CompareTag("tree")
-            && m_lumberjackAi.targetGameObject == null 
-            && m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
+        if (m_tree == null)
         {
-            m_lumberjackAi.targetGameObject = _other.gameObject;
-            m_lumberjackAi.blackBoard["TreeIsVisible"] = true;
-            m_lumberjackAi.RePlan();
+            if (_other.CompareTag("tree"))
+            {
+                m_tree = _other.gameObject;
+                m_lumberjackAi.blackBoard["TreeIsVisible"] = true;
+
+                if (m_lumberjackAi.targetGameObject == null && m_lumberjackAi.blackBoard["IsCarryingObject"].Equals(false))
+                {
+                    // Check if we need the wood. If so, replan
+                    if (m_lumberjackAi.blackBoard["EnoughWoodStored"].Equals(false))
+                    {
+                        m_lumberjackAi.targetGameObject = m_tree;
+                        m_lumberjackAi.RePlan();
+                    }
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider _other)
     {
-        if (_other.CompareTag("tree") && m_lumberjackAi.targetGameObject != null)
+        if (m_tree && _other.gameObject == m_tree)
         {
-            // m_lumberjackAi.spottedTree = null;
-            // m_lumberjackAi.blackBoard["TreeIsVisible"] = false;
-            // m_lumberjackAi.RePlan();
-        }    
+            m_tree = null;
+            m_lumberjackAi.blackBoard["TreeIsVisible"] = false;
+        }
     }
 
     private void OnDrawGizmos()

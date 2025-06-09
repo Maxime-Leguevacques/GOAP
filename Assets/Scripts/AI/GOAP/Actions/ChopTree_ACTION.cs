@@ -10,7 +10,9 @@ public class ChopTree_ACTION : Action
         // Priority
         // Preconditions
         preconditions["TreeIsInRange"] = true;
+        
         preconditions["IsCarryingObject"] = false;
+        preconditions["CarriedObject"] = "";
     }
 
     public override void Perform(GameObject _agent)
@@ -35,6 +37,7 @@ public class ChopTree_ACTION : Action
         
         _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;
+        _blackBoard["CarriedObject"] = "tree";
     }
 
     public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
@@ -45,6 +48,7 @@ public class ChopTree_ACTION : Action
         
         _blackBoard["IsGoingSomewhere"] = false;
         _blackBoard["IsCarryingObject"] = true;
+        _blackBoard["CarriedObject"] = "tree";
     }
 
     public override void Reset()

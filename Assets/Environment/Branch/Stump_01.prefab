@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3153294727251981205}
   - component: {fileID: 5520584560378684209}
   - component: {fileID: 6927749484677101326}
+  - component: {fileID: 6621745005827122815}
   m_Layer: 7
   m_Name: Stump_01
   m_TagString: branch
@@ -170,6 +171,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &6621745005827122815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108507113624723981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.7, z: 0.5}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &6690580599928000713
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +288,6 @@ GameObject:
   - component: {fileID: 6260085879979622260}
   - component: {fileID: 6476173587137124530}
   - component: {fileID: 8313632506172493172}
-  - component: {fileID: 3017253793611418416}
   m_Layer: 7
   m_Name: Stump_01_LOD0
   m_TagString: Untagged
@@ -341,24 +362,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3017253793611418416
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7067936637415105213}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.45, y: 0.8131511, z: 0.45}
-  m_Center: {x: 0, y: 0.4065755, z: 0}

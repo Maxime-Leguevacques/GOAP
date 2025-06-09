@@ -31,7 +31,7 @@ public class WanderAround_ACTION : Action
         preconditions["TreeIsVisible"] = false;
         preconditions["BranchIsVisible"] = false;
         preconditions["OreIsVisible"] = false;
-        preconditions["IsCarryingObject"] = false;
+        preconditions["CarriedObject"] = "";
     }
 
     public override void Perform(GameObject _agent)
@@ -73,6 +73,7 @@ public class WanderAround_ACTION : Action
     {
         _blackBoard["TreeIsVisible"] = false;    // Set it to false so planner will re-perform it
         _blackBoard["BranchIsVisible"] = false;    // Set it to false so planner will re-perform it
+        _blackBoard["OreIsVisible"] = false;    // Set it to false so planner will re-perform it
         _blackBoard["ChestIsInRange"] = false;
     }
 
@@ -80,6 +81,7 @@ public class WanderAround_ACTION : Action
     {
         _blackBoard["TreeIsVisible"] = true;
         _blackBoard["BranchIsVisible"] = true;
+        _blackBoard["OreIsVisible"] = true;
         _blackBoard["ChestIsInRange"] = false;
     }
 

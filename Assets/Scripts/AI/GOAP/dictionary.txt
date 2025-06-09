@@ -10,7 +10,7 @@
 { "ChestIsInRange", true },
 
 { "IsGoingSomewhere", true },
-{ "IsCarryingObject", false },
+{ "CarriedObject", "" },
 
 { "WoodStored", 1 },
 { "OreStored", 0 }

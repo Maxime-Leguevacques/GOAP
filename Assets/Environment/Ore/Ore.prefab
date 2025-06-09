@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 1567362975434877764}
   - component: {fileID: 7998818664595836629}
   - component: {fileID: 3714305090496331506}
-  - component: {fileID: 1229038071620343311}
   m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
@@ -171,27 +170,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1229038071620343311
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644418787884362995}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3366029984217547966
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +351,7 @@ GameObject:
   - component: {fileID: 718805582562319659}
   - component: {fileID: -2918821747105672765}
   - component: {fileID: -1441340642647199467}
+  - component: {fileID: 8979462040883438832}
   m_Layer: 7
   m_Name: Ore
   m_TagString: ore
@@ -516,6 +495,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interactionTime: 10
   m_audioClip: {fileID: 8300000, guid: 0b22f4ddfa3697f4f9f31c18709ac3ae, type: 3}
+--- !u!65 &8979462040883438832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898537910210053659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5640699551254724109
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,16 @@ public class Planner : MonoBehaviour
                     break;
                 }
             }
+            
+            // String check
+            if (goal.Value is string goalStr && _blackBoard[goal.Key] is string blackBoardString)
+            {
+                if (blackBoardString != goalStr)
+                {
+                    areGoalsMet = false;
+                    break;
+                }
+            }
         }
 
         // If so, return the plan
@@ -95,12 +105,8 @@ public class Planner : MonoBehaviour
             Dictionary<string, object> recursiveBlackBoard = new Dictionary<string, object>(_blackBoard);
             Queue<Action> recursivePlan = new Queue<Action>(_plan);
 
-            // Clone action to be able to reuse the same action multiple times
-            // Action clonedAction = Instantiate(action);
-            // clonedAction.Init(recursiveBlackBoard);
             
             // Update blackboard
-            // clonedAction.UpdatePlanBlackBoard(recursiveBlackBoard);
             action.UpdatePlanBlackBoard(recursiveBlackBoard);
             
             // recursivePlan.Enqueue(clonedAction);

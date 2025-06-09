@@ -59,17 +59,22 @@ public class Lumberjack_AI : MonoBehaviour
             
             { "ChestIsInRange", false },
             
-            { "IsCarryingObject", false },
+            { "IsCarryingObject", false},
+            { "CarriedObject", "" },
+            
             { "IsGoingSomewhere", false },
             
             { "WoodStored", 0 },
             { "OreStored", 0 },
+            
+            { "EnoughWoodStored", false },
+            { "EnoughOreStored", false }
         };
 
         m_goals = new()
         {
             { "WoodStored", 2 },
-            { "OreStored", 1}
+            { "OreStored", 1 }
         };
         
         // Plan
@@ -107,6 +112,16 @@ public class Lumberjack_AI : MonoBehaviour
                 
                 m_currentAction.Reset();
                 m_currentAction = null;
+
+                if ((int)blackBoard["WoodStored"] >= (int)m_goals["WoodStored"])
+                {
+                    blackBoard["EnoughWoodStored"] = true;
+                }
+                
+                if ((int)blackBoard["OreStored"] >= (int)m_goals["OreStored"])
+                {
+                    blackBoard["EnoughOreStored"] = true;
+                }
                 
                 // Check if goals are reached
                 if (CheckIfGoalsAreReached(blackBoard, m_goals))

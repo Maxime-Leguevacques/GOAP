@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class StoreTree_ACTION : StoreInChestAction
 {
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
-        base.Init(_blackBoard);
+        base.InitForward(_blackBoard);
 
         preconditions["CarriedObject"] = "tree";
     }
-    
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        base.InitBackward(_blackBoard);
+
+        _blackBoard["CarriedObject"] = "tree";
+    }
+
     public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
     {
         // Update storage
@@ -26,7 +33,7 @@ public class StoreTree_ACTION : StoreInChestAction
         base.UpdateBlackBoardSuccessful(_blackBoard);
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         if (_blackBoard["CarriedObject"] != null)
         {
@@ -37,6 +44,13 @@ public class StoreTree_ACTION : StoreInChestAction
             }
         }
         
-        base.UpdatePlanBlackBoard(_blackBoard);
+        base.UpdateForwardPlanBlackBoard(_blackBoard);
+    }
+
+    public override void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["WoodStored"] = (int)_blackBoard["WoodStored"] + 2;
+        
+        base.UpdateBackwardPlanBlackBoard(_blackBoard);
     }
 }

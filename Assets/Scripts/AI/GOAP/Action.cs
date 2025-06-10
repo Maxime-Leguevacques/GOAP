@@ -23,7 +23,8 @@ public abstract class Action : MonoBehaviour
 
     public Dictionary<string, object> preconditions = new();
 
-    public abstract void Init(Dictionary<string, object> _blackBoard);
+    public abstract void InitForward(Dictionary<string, object> _blackBoard);
+    public abstract void InitBackward(Dictionary<string, object> _blackBoard);
 
     public bool CheckPreconditions(GameObject _agent)
     {
@@ -41,7 +42,8 @@ public abstract class Action : MonoBehaviour
     public abstract void Perform(GameObject _agent);
     public abstract void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard);
     public abstract void UpdateBlackBoardUnsuccessful(Dictionary<string, object> _blackBoard);
-    public abstract void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard);
+    public abstract void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard);
+    public abstract void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard);
 
     public abstract void Reset();
 }

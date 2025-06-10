@@ -7,13 +7,22 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class GoToChest_ACTION : GoToAction
 {
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
-        base.Init(_blackBoard);
+        base.InitForward(_blackBoard);
         // Priority
         // Preconditions
         preconditions["ChestIsInRange"] = false;
         preconditions["IsCarryingObject"] = true;
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        base.InitBackward(_blackBoard);
+        // Priority
+        // Preconditions
+        _blackBoard["ChestIsInRange"] = false;
+        _blackBoard["IsCarryingObject"] = true;
     }
 
     public override void Perform(GameObject _agent)
@@ -35,9 +44,9 @@ public class GoToChest_ACTION : GoToAction
         _blackBoard["ChestIsInRange"] = true;
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        base.UpdatePlanBlackBoard(_blackBoard);
+        base.UpdateForwardPlanBlackBoard(_blackBoard);
         // Effects
         _blackBoard["ChestIsInRange"] = true;
     }

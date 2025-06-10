@@ -33,7 +33,7 @@ public class UiManager : MonoBehaviour
 
         for (int i = 0; i < m_actions.Count; i++)
         {
-            m_actions[i].Init(m_agent.GetComponent<Lumberjack_AI>().blackBoard);
+            m_actions[i].InitForward(m_agent.GetComponent<Lumberjack_AI>().blackBoard);
             //
             // foreach (var effect in m_actions[i].effects)
             // {

@@ -17,11 +17,18 @@ public class GoToAction : Action
     #endregion Variables
     
     
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
         preconditions["IsGoingSomewhere"] = false;
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        // Priority
+        // Preconditions
+        _blackBoard["IsGoingSomewhere"] = false;
     }
 
     public override void Perform(GameObject _agent)
@@ -83,7 +90,22 @@ public class GoToAction : Action
         _blackBoard["OreIsVisible"] = false;
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["IsGoingSomewhere"] = true;
+        
+        // Set everything not in range and change it in the action
+        _blackBoard["TreeIsInRange"] = false;
+        _blackBoard["BranchIsInRange"] = false;
+        _blackBoard["OreIsInRange"] = false;
+        _blackBoard["ChestIsInRange"] = false;
+        
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["BranchIsVisible"] = false;
+        _blackBoard["OreIsVisible"] = false;
+    }
+
+    public override void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["IsGoingSomewhere"] = true;
         

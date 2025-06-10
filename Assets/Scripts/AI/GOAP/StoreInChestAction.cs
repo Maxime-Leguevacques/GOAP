@@ -11,12 +11,20 @@ public class StoreInChestAction : Action
     #endregion Variables
     
     
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
         preconditions["IsCarryingObject"] = true;
         preconditions["ChestIsInRange"] = true;
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        // Priority
+        // Preconditions
+        _blackBoard["IsCarryingObject"] = true;
+        _blackBoard["ChestIsInRange"] = true;
     }
 
     public override void Perform(GameObject _agent)
@@ -50,7 +58,15 @@ public class StoreInChestAction : Action
         _blackBoard["IsCarryingObject"] = false;
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["IsGoingSomewhere"] = false;
+        _blackBoard["CarriedObject"] = "";
+        _blackBoard["IsCarryingObject"] = false;
+    }
+
+    public override void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
         _blackBoard["IsGoingSomewhere"] = false;

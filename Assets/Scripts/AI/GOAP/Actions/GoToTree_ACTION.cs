@@ -7,12 +7,20 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class GoToTree_ACTION : GoToAction
 {
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
-        base.Init(_blackBoard);
+        base.InitForward(_blackBoard);
         // Priority
         // Preconditions
         preconditions["TreeIsVisible"] = true;
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        base.InitBackward(_blackBoard);
+        // Priority
+        // Preconditions
+        _blackBoard["TreeIsVisible"] = true;
     }
 
     public override void UpdateBlackBoardSuccessful(Dictionary<string, object> _blackBoard)
@@ -29,9 +37,9 @@ public class GoToTree_ACTION : GoToAction
         _blackBoard["TreeIsInRange"] = true;
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
-        base.UpdatePlanBlackBoard(_blackBoard);
+        base.UpdateForwardPlanBlackBoard(_blackBoard);
         // Effects
         _blackBoard["TreeIsInRange"] = true;
     }

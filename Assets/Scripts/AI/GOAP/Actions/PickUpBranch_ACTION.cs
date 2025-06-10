@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickUpBranch_ACTION : Action
 {
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
@@ -13,6 +13,16 @@ public class PickUpBranch_ACTION : Action
         
         preconditions["IsCarryingObject"] = false;
         preconditions["CarriedObject"] = "";
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        // Priority
+        // Preconditions
+        _blackBoard["BranchIsInRange"] = true;
+        
+        _blackBoard["IsCarryingObject"] = false;
+        _blackBoard["CarriedObject"] = "";
     }
 
     public override void Perform(GameObject _agent)
@@ -61,7 +71,18 @@ public class PickUpBranch_ACTION : Action
         _blackBoard["CarriedObject"] = "";
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        // Effects
+        _blackBoard["BranchIsVisible"] = false;
+        _blackBoard["BranchIsInRange"] = false;
+        
+        _blackBoard["IsGoingSomewhere"] = false;
+        _blackBoard["IsCarryingObject"] = true;
+        _blackBoard["CarriedObject"] = "branch";
+    }
+
+    public override void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         // Effects
         _blackBoard["BranchIsVisible"] = false;

@@ -24,7 +24,7 @@ public class WanderAround_ACTION : Action
     #endregion Variables
     
     
-    public override void Init(Dictionary<string, object> _blackBoard)
+    public override void InitForward(Dictionary<string, object> _blackBoard)
     {
         // Priority
         // Preconditions
@@ -35,6 +35,19 @@ public class WanderAround_ACTION : Action
         preconditions["BranchIsInRange"] = false;
         preconditions["OreIsInRange"] = false;
         preconditions["CarriedObject"] = "";
+    }
+
+    public override void InitBackward(Dictionary<string, object> _blackBoard)
+    {
+        // Priority
+        // Preconditions
+        _blackBoard["TreeIsVisible"] = false;
+        _blackBoard["BranchIsVisible"] = false;
+        _blackBoard["OreIsVisible"] = false;
+        _blackBoard["TreeIsInRange"] = false;
+        _blackBoard["BranchIsInRange"] = false;
+        _blackBoard["OreIsInRange"] = false;
+        _blackBoard["CarriedObject"] = "";
     }
 
     public override void Perform(GameObject _agent)
@@ -88,7 +101,15 @@ public class WanderAround_ACTION : Action
         _blackBoard["ChestIsInRange"] = false;
     }
 
-    public override void UpdatePlanBlackBoard(Dictionary<string, object> _blackBoard)
+    public override void UpdateForwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
+    {
+        _blackBoard["TreeIsVisible"] = true;
+        _blackBoard["BranchIsVisible"] = true;
+        _blackBoard["OreIsVisible"] = true;
+        _blackBoard["ChestIsInRange"] = false;
+    }
+
+    public override void UpdateBackwardPlanBlackBoard(Dictionary<string, object> _blackBoard)
     {
         _blackBoard["TreeIsVisible"] = true;
         _blackBoard["BranchIsVisible"] = true;

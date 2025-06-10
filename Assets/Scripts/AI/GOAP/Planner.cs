@@ -7,7 +7,7 @@ public class Planner : MonoBehaviour
 {
     #region Variables
     
-    [SerializeField, Tooltip("Max depth of the plan")] private int MAX_DEPTH = 50;
+    [SerializeField, Tooltip("Max depth of the plan")] private int MAX_DEPTH = 25;
     
     private List<Action> m_actionList;
     
@@ -103,25 +103,25 @@ public class Planner : MonoBehaviour
             }
             
             // // Check if action won't undo any already satisfied goal
-            // Dictionary<string, object> simulatedBlackBoard = new(_blackBoard);
-            // action.UpdatePlanBlackBoard(simulatedBlackBoard);
-            // bool invalidatesSatisfiedGoal = false;
-            // foreach (var goal in _goals)
-            // {
-            //     if (_blackBoard.TryGetValue(goal.Key, out var currentValue) && currentValue.Equals(goal.Value))
-            //     {
-            //         if (simulatedBlackBoard.TryGetValue(goal.Key, out var after) && !after.Equals(goal.Value))
-            //         {
-            //             invalidatesSatisfiedGoal = true;
-            //             break;
-            //         }
-            //     }
-            // }
-            //
-            // if (invalidatesSatisfiedGoal)
-            // {
-            //     continue;
-            // }
+            Dictionary<string, object> simulatedBlackBoard = new(_blackBoard);
+            action.UpdatePlanBlackBoard(simulatedBlackBoard);
+            bool invalidatesSatisfiedGoal = false;
+            foreach (var goal in _goals)
+            {
+                if (_blackBoard.TryGetValue(goal.Key, out var currentValue) && currentValue.Equals(goal.Value))
+                {
+                    if (simulatedBlackBoard.TryGetValue(goal.Key, out var after) && !after.Equals(goal.Value))
+                    {
+                        invalidatesSatisfiedGoal = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (invalidatesSatisfiedGoal)
+            {
+                continue;
+            }
 
             Dictionary<string, object> recursiveBlackBoard = new Dictionary<string, object>(_blackBoard);
             Queue<Action> recursivePlan = new Queue<Action>(_plan);

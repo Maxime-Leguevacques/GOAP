@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Planner))]
+[RequireComponent(typeof(AudioSource))]
 public class Lumberjack_AI : MonoBehaviour
 {
     #region Variables
@@ -17,6 +18,10 @@ public class Lumberjack_AI : MonoBehaviour
     private Planner m_planner;
     private Queue<Action> m_plannedActions = new();
     private Action m_currentAction;
+
+    private AudioSource m_audioSource;
+    [SerializeField] private AudioClip m_noPlanFoundClip;
+    [SerializeField] private AudioClip m_goalsReachedClip;
 
     private Dictionary<string, object> m_goals;
     
@@ -35,6 +40,7 @@ public class Lumberjack_AI : MonoBehaviour
     private void Awake()
     {
         m_planner = GetComponent<Planner>();
+        m_audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -73,8 +79,8 @@ public class Lumberjack_AI : MonoBehaviour
 
         m_goals = new()
         {
-            { "WoodStored", 2 },
-            { "OreStored", 1 }
+            { "WoodStored", 3 },
+            { "OreStored", 3 }
         };
         
         // Plan
@@ -128,6 +134,7 @@ public class Lumberjack_AI : MonoBehaviour
                 {
                     Debug.Log("Goals Reached !");
                     GetComponent<NavMeshAgent>().isStopped = true;
+                    m_audioSource.PlayOneShot(m_goalsReachedClip);
                 }
                 else
                 {
@@ -176,6 +183,7 @@ public class Lumberjack_AI : MonoBehaviour
         {
             // Get the smallest by number of actions
             Queue<Action> smallestPlan = m_planner.possiblePlans.OrderBy(plan => plan.Count).FirstOrDefault();
+            Debug.Log("smallest plan is: " + smallestPlan.Count);
             // Get the cheapest by action cost
             
             m_plannedActions = smallestPlan;
@@ -184,6 +192,10 @@ public class Lumberjack_AI : MonoBehaviour
             {
                 // Debug.Log(action);
             }
+        }
+        else
+        {
+            m_audioSource.PlayOneShot(m_noPlanFoundClip);
         }
     }
 }

@@ -13,6 +13,7 @@ public class GoToChest_ACTION : GoToAction
         // Priority
         // Preconditions
         preconditions["ChestIsInRange"] = false;
+        preconditions["IsCarryingObject"] = true;
     }
 
     public override void Perform(GameObject _agent)
